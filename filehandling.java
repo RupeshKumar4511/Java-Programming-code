@@ -3,6 +3,7 @@ Pass the names of the files through command-line arguments */
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.FileReader;
 import java.util.Scanner;
 
 public class filehandling{
@@ -69,22 +70,21 @@ public class filehandling{
    String user_input = scanner.next();
    scanner.close();
   
-   try{
-    File file = new File(user_input);
-    Scanner scanner1 = new Scanner(file);
-    while (scanner1.hasNextLine()) {
-    String line = scanner1.nextLine();
-    
-    FileWriter fileWriter2 = new FileWriter("C:\\Rupesh\\file2.txt");
-    fileWriter2.write(line.substring(0));
-    fileWriter2.close();
-    System.out.println("file copied");
-    }
+    try (FileReader fr = new FileReader(user_input);
+            FileWriter fw = new FileWriter("file4.txt")) {
+             
+            int charData;
+            while ((charData = fr.read()) != -1) {
+                fw.write(charData);
+            }
+        fr.close();
+            fw.close();
+        }
 
     scanner1.close();
     } 
 
-    catch(Exception e){
+    catch(IOException e){
     System.out.println("exception here");
     }
 
