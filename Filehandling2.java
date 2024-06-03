@@ -3,8 +3,10 @@
  */
 
 import java.io.FileWriter;
-import java.util.Scanner;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.File;
+
 public class Filehandling2{
      public static void main(String[] args) {
      /*  
@@ -33,25 +35,26 @@ System.out.println("some problem  occured");
 
 */
     // code to read a file.
-    try{
-
-    File file = new File("C:\\Rupesh\\file3.txt");
-    Scanner scanner = new Scanner(file);
-
-    while (scanner.hasNextLine()) {
-       String line = scanner.nextLine();
-
-    if(line.contains("//")){
-       int index = line.indexOf("//");
-       int index1 = line.indexOf(".",index);
-       System.out.println(line.substring(index,index1+1));
-
-    }      
-    }  
-    scanner.close();     
-       
-    }
-    catch (Exception e){
+    try {FileReader fr = new FileReader("C:\\Rupesh\\file3.txt");
+             
+             
+            int charData;
+            StringBuilder line = new StringBuilder();
+            while ((charData = fr.read()) != -1) {
+                line.append((char)charData);
+            }
+            
+            String lines = line.toString();
+            
+        if(lines.contains("//")){
+        int index = lines.indexOf("//");
+        int index1 = lines.indexOf(".",index);
+        System.out.println(lines.substring(index,index1+1));
+ 
+        }      
+            fr.close();
+        }
+    catch (IOException e){
         System.out.println("some mistake in your code");
     }
     finally{
