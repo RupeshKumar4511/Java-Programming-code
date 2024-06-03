@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.util.Scanner;
+import java.io.IOException;
 
 public class filehandling{
     
@@ -36,18 +37,21 @@ public class filehandling{
 
 
     // code to read a file.
-    try{
-
-    File file = new File("C:\\Rupesh\\file1.txt");
-      Scanner scanner = new Scanner(file);
-      while (scanner.hasNextLine()) {
-      String line = scanner.nextLine();
-      System.out.println(line);
-      scanner.close();  
-      }     
-       
-    }
-    catch (Exception e){
+  try {
+   FileReader fr = new FileReader("C:\\Rupesh\\file1.txt");
+             
+             
+            int charData;
+            StringBuilder line = new StringBuilder();
+            while ((charData = fr.read()) != -1) {
+                line.append((char)charData);
+            }
+            
+            System.out.println(line.toString());
+            fr.close();
+        }
+        
+    catch (IOException e){
         System.out.println("some mistake in your code");
     }
 
@@ -70,19 +74,20 @@ public class filehandling{
    String user_input = scanner.next();
    scanner.close();
   
-    try (FileReader fr = new FileReader(user_input);
-            FileWriter fw = new FileWriter("file4.txt")) {
+    try {
+        FileReader fr = new FileReader(user_input);
+        FileWriter fw = new FileWriter("file4.txt");
              
             int charData;
             while ((charData = fr.read()) != -1) {
                 fw.write(charData);
             }
         fr.close();
-            fw.close();
+        fw.close();
+        System.out.println("file copied");
+        
         }
 
-    scanner1.close();
-    } 
 
     catch(IOException e){
     System.out.println("exception here");
