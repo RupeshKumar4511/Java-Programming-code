@@ -15,7 +15,36 @@ method. EveryJava application has to have at least one class. and at least
 one main method (**not one main per class;just one main per application**).
 
 
+# class and Object
+![image](https://github.com/RupeshKumar4511/Java-Programming-code/assets/149661006/dab63228-4e62-46ab-bdcf-5e267c283ab0)
 
+
+**A class is not an object.
+(but it’s used to construct them)**
+
+
+**Object**
+
+
+Object is a collection of state(variables ) and behavior ( method)
+
+
+ **Class** 
+ A class is blue print of an  object.
+It tells virtual machine how to make an object of that type . Each object made from that class have its own value for the instance variable ov that class.
+
+
+# Use of main method:
+
+1. To test your real class
+<br>
+
+2.To launch/start your Java application
+
+# while loop 
+while(true){
+}
+This is used to ceate infinite loop.
 
 # Wrapper class
 
