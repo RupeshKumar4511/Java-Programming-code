@@ -373,3 +373,30 @@ Handle user input from the view.
 Update the model based on user actions.
 Select the view to display based on the model state and user input.
 Example: In the e-commerce application, the controller would manage actions like adding items to a cart, processing user logins, and handling checkout processes
+
+
+
+
+
+
+# Swing
+**How to change the font of text in label**
+ label.setFont(new Font("Serif", Font.BOLD, 50));
+
+
+**How to set the background color in swing**                  
+ frame.getContentPane().setBackground(Color.YELLOW);  
+
+ getContentPane() => A container has several layers in it. We can think of a layer as a transparent film that overlays the container. In Java Swing, the layer that is used to hold objects is called the content pane. Objects are added to the content pane layer of the container. The getContentPane() method retrieves the content pane layer so that you can add an object or apply method to it. The content pane is an object created by the Java run time environment. 
+**Remember that Content Pane is a layer of container.**
+
+<br>
+**How to use SetBounds(x-axis , y- axis , width, height)**
+<br>
+Remember that in swinng or awt gui , the origin start from top left . 
+
+![image](https://github.com/RupeshKumar4511/Java-Programming-code/assets/149661006/f4a9bffb-82d1-46c3-9184-9fdde918a525)
+
+
+
+ 
