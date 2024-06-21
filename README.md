@@ -381,10 +381,12 @@ Example: In the e-commerce application, the controller would manage actions like
 
 # Swing
 **How to change the font of text in label**
+
  label.setFont(new Font("Serif", Font.BOLD, 50));
 
 
-**How to set the background color in swing**                  
+**How to set the background color in swing**  
+<br>
  frame.getContentPane().setBackground(Color.YELLOW);  
 
  getContentPane() => A container has several layers in it. We can think of a layer as a transparent film that overlays the container. In Java Swing, the layer that is used to hold objects is called the content pane. Objects are added to the content pane layer of the container. The getContentPane() method retrieves the content pane layer so that you can add an object or apply method to it. The content pane is an object created by the Java run time environment. 
