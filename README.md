@@ -402,3 +402,1703 @@ Remember that in swinng or awt gui , the origin start from top left .
 
 
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// My app
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.*;
+import javax.swing.*;
+import rpack.PlaceholderTextField;
+
+class Login {
+
+    Login() {
+        // Create a frame
+        JFrame frame = new JFrame();
+
+        // create label and set its properties
+        JLabel label = new JLabel();
+        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setSize(1250, 100);
+        label.setText("SCHOOL MANAGEMENT SYSTEM");
+        label.setFont(new Font("Serif", Font.BOLD, 50));
+
+        JLabel lab1 = new JLabel("User_ID :");
+        lab1.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab1.setBounds(150, 250, 250, 30);
+
+        JLabel lab2 = new JLabel("Password :");
+        lab2.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab2.setBounds(150, 250, 250, 30);
+
+        // create TextField and set its properties
+        JTextField text1 = new JTextField();
+        text1.setFont(new Font("Serif", Font.PLAIN, 25));
+        text1.setBounds(450, 165, 300, 30);
+
+        JTextField text2 = new JTextField();
+        text2.setFont(new Font("Serif", Font.PLAIN, 25));
+        text2.setBounds(450, 205, 300, 30);
+
+        // Here add label in frame
+        frame.add(label);
+        frame.add(lab1);
+        frame.add(lab2);
+
+        // here add textfield to frame
+
+        frame.add(text1);
+        frame.add(text2);
+
+        // set the properties of frame
+        frame.setSize(500, 500);
+        frame.setLayout(null);
+        frame.getContentPane().setBackground(Color.YELLOW);
+        frame.setVisible(true);
+
+    }
+}
+
+class First implements ActionListener {
+
+    private JButton button, button1, button2, button3, button4, button5, button6,b7,b8,b9,b10,b11,b12;
+
+    First() {
+
+        // Create a frame
+        JFrame frame = new JFrame();
+
+        // Create a label and set its properties
+
+        JLabel label = new JLabel();
+        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setSize(1250, 100);
+        label.setText("GOVT SR. SEC. SECONDARY SCHOOL, KARNAL");
+        label.setFont(new Font("Serif", Font.BOLD, 50));
+
+        // create buttons and add to frame
+        button = new JButton("STUDENT  REGISTRATION");
+        button.setBounds(230, 150, 200, 30);
+        frame.add(button);
+
+
+        button3 = new JButton("ENROLLMENT  DETAILS");
+        button3.setBounds(230, 200, 200, 30);
+        frame.add(button3);
+
+        button4 = new JButton("ACADEMIC  DETAILS");
+        button4.setBounds(230, 250, 200, 30);
+        frame.add(button4);
+
+        button5 = new JButton("STUDENT'S  FEE  DETAILS");
+        button5.setBounds(230, 300, 200, 30);
+        frame.add(button5);
+
+        button6 = new JButton("ALL  STUDENT'S  DETAILS");
+        button6.setBounds(230, 350, 200, 30);
+        frame.add(button6);
+
+
+
+
+
+
+
+        button1 = new JButton("TEACHER  REGISTRATION");
+        button1.setBounds(480, 150, 300, 30);
+        frame.add(button1);
+
+        b7 = new JButton("TEACHER'S  SALARY  STRUCTURE");
+        b7.setBounds(480, 200, 300, 30);
+        frame.add(b7);
+
+        b8 = new JButton("TEACHER'S  SALARY  DETAILS");
+        b8.setBounds(480, 250, 300, 30);
+        frame.add(b8);
+
+
+        b9 = new JButton("ALL  TEACHER'S  DETAILs");
+        b9.setBounds(480, 300, 300, 30);
+        frame.add(b9);
+
+
+
+
+
+
+        button2 = new JButton("OTHER  EMPLOYEES  REGISTRATION");
+        button2.setBounds(830, 150, 300, 30);
+        frame.add(button2);
+        b10 = new JButton("EMPLOYEE'S  SALARY  STRUCTURE");
+        b10.setBounds(830, 200, 300, 30);
+        frame.add(b10);
+
+        
+        b11 = new JButton("EMPLOYEE'S  SALARY  DETAILS");
+        b11.setBounds(830, 250, 300, 30);
+        frame.add(b11);
+
+        b12 = new JButton("ALL  EMPLOYEE'S  DETAILS");
+        b12.setBounds(830, 300, 300, 30);
+        frame.add(b12);
+
+
+
+
+
+
+        // Here add label in frame
+        frame.add(label);
+
+        // set the properties of frame
+        frame.setSize(500, 500);
+        frame.setLayout(null);
+        frame.getContentPane().setBackground(Color.YELLOW);
+        frame.setVisible(true);
+
+        // Registraton of buttons
+        button.addActionListener(this);
+        button1.addActionListener(this);
+        button2.addActionListener(this);
+        button3.addActionListener(this);
+        button4.addActionListener(this);
+        button5.addActionListener(this);
+        button6.addActionListener(this);
+        b7.addActionListener(this);
+        b8.addActionListener(this);
+        b9.addActionListener(this);
+        b10.addActionListener(this);
+        b11.addActionListener(this);
+        b12.addActionListener(this);
+
+    }
+
+    // Event handling
+
+    public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource() == button) {
+            new Student(null);
+
+        }
+        if (e.getSource() == button1) {
+            new Teacher();
+        }
+        if (e.getSource() == button2) {
+            new OtherEmployee();
+        }
+        if (e.getSource() == button3) {
+            new Enrollment(null);
+        }
+        if (e.getSource() == button4) {
+            new Academic(null);
+        }
+        if (e.getSource() == button5) {
+            new Fee(null);
+        }
+        // if (e.getSource() == button6) {
+        //     new Fee(null);
+        // }
+        if (e.getSource() == b7) {
+            new TeacherSalaryStructure(null);
+        }
+        if (e.getSource() == b8) {
+            new TeacherSalaryDetails(null);
+        }
+        // if (e.getSource() == b9) {
+        //     new Fee(null);
+        // }
+        
+        if (e.getSource() == b10) {
+            new EmployeeSalaryStructure(null);
+        }
+        if (e.getSource() == b11) {
+            new EmployeeSalaryDetails(null);
+        }
+        // if (e.getSource() == b12) {
+        //     new Fee(null);
+        // }
+    }
+}
+
+class Student extends PlaceholderTextField implements ActionListener{
+    JButton back;
+    String placeholder;
+
+    Student(String placeholder) {
+        super(placeholder);
+
+        // create second frame
+        JFrame frame1 = new JFrame();
+
+        // create label and set its properties
+        JLabel label1 = new JLabel();
+        label1.setHorizontalAlignment(JLabel.CENTER);
+        label1.setSize(1250, 100);
+        label1.setText("STUDENT  REGISTRATION  FORM ");
+        label1.setFont(new Font("Serif", Font.BOLD, 50));
+
+        JLabel lab1 = new JLabel("Student ID :");
+        lab1.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab1.setBounds(70, 160, 250, 30);
+
+        JLabel lab2 = new JLabel("Student Name :");
+        lab2.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab2.setBounds(70, 200, 250, 30);
+
+        JLabel lab3 = new JLabel("Father Name :");
+        lab3.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab3.setBounds(70, 240, 250, 30);
+
+        JLabel lab4 = new JLabel("Mother Name :");
+        lab4.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab4.setBounds(70, 280, 250, 30);
+
+        JLabel lab5 = new JLabel("Date Of Birth :");
+        lab5.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab5.setBounds(70, 320, 250, 30);
+
+        JLabel lab6 = new JLabel("Gender :");
+        lab6.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab6.setBounds(70, 360, 250, 30);
+
+        JLabel lab7 = new JLabel("Mobile Number1 :");
+        lab7.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab7.setBounds(70, 400, 250, 30);
+
+        JLabel lab8 = new JLabel("Mobile Number2 :");
+        lab8.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab8.setBounds(70, 440, 250, 30);
+
+        JLabel lab9 = new JLabel("Registration Date :");
+        lab9.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab9.setBounds(70, 480, 250, 30);
+
+        JLabel lab10 = new JLabel("Address :");
+        lab10.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab10.setBounds(70, 520, 250, 30);
+
+        JLabel lab11 = new JLabel("Student's Aaadhar NO :");
+        lab11.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab11.setBounds(700, 160, 250, 30);
+
+        JLabel lab12 = new JLabel("Father's Aadhaar NO :");
+        lab12.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab12.setBounds(700, 200, 250, 30);
+
+        JLabel lab13 = new JLabel("Mother's Aadhaar NO :");
+        lab13.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab13.setBounds(700, 240, 250, 30);
+
+        JLabel lab14 = new JLabel("Family ID :");
+        lab14.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab14.setBounds(700, 280, 250, 30);
+
+        JLabel lab15 = new JLabel("Category :");
+        lab15.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab15.setBounds(700, 320, 250, 30);
+
+        JLabel lab16 = new JLabel("Student's Photo :");
+        lab16.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab16.setBounds(700, 360, 250, 30);
+
+        // create TextField and set its properties
+
+        JTextField text1 = new JTextField();
+        text1.setFont(new Font("Serif", Font.PLAIN, 25));
+        text1.setBounds(300, 165, 300, 30);
+
+        JTextField text2 = new JTextField();
+        text2.setFont(new Font("Serif", Font.PLAIN, 25));
+        text2.setBounds(300, 205, 300, 30);
+
+        JTextField text3 = new JTextField();
+        text3.setFont(new Font("Serif", Font.PLAIN, 25));
+        text3.setBounds(300, 245, 300, 30);
+
+        JTextField text4 = new JTextField();
+        text4.setFont(new Font("Serif", Font.PLAIN, 25));
+        text4.setBounds(300, 285, 300, 30);
+
+        PlaceholderTextField text5 = new PlaceholderTextField("YYYY-MM-DD");
+        text5.setFont(new Font("Serif", Font.PLAIN, 25));
+        text5.setBounds(300, 325, 300, 30);
+
+        // ComboBox for gender
+        String gender[] = { "Male", "Female", "Other" };
+        JComboBox<String> ch1 = new JComboBox<>(gender);
+        ch1.setBounds(300, 365, 300, 30);
+
+        JTextField text7 = new JTextField();
+        text7.setFont(new Font("Serif", Font.PLAIN, 25));
+        text7.setBounds(300, 405, 300, 30);
+
+        JTextField text8 = new JTextField();
+        text8.setFont(new Font("Serif", Font.PLAIN, 25));
+        text8.setBounds(300, 445, 300, 30);
+
+        PlaceholderTextField text9 = new PlaceholderTextField("YYYY-MM-DD");
+        text9.setFont(new Font("Serif", Font.PLAIN, 25));
+        text9.setBounds(300, 485, 300, 30);
+
+        JTextField text10 = new JTextField();
+        text10.setFont(new Font("Serif", Font.PLAIN, 25));
+        text10.setBounds(300, 525, 300, 30);
+
+        JTextField text11 = new JTextField();
+        text11.setFont(new Font("Serif", Font.PLAIN, 25));
+        text11.setBounds(950, 165, 300, 30);
+
+        JTextField text12 = new JTextField();
+        text12.setFont(new Font("Serif", Font.PLAIN, 25));
+        text12.setBounds(950, 205, 300, 30);
+
+        JTextField text13 = new JTextField();
+        text13.setFont(new Font("Serif", Font.PLAIN, 25));
+        text13.setBounds(950, 245, 300, 30);
+
+        JTextField text14 = new JTextField();
+        text14.setFont(new Font("Serif", Font.PLAIN, 25));
+        text14.setBounds(950, 285, 300, 30);
+
+        // ComboBox for category
+        String category[] = { "General", "OBC", "SC/ST" };
+        JComboBox<String> ch2 = new JComboBox<>(category);
+        ch2.setBounds(950, 325, 300, 30);
+
+        // create buttons for submit and clear
+
+        JButton sub = new JButton(" SUBMIT ");
+        sub.setBounds(400, 600, 200, 30);
+
+        JButton clear = new JButton(" CLEAR ");
+        clear.setBounds(650, 600, 200, 30);
+
+        JButton photo = new JButton("Upload Photo");
+        photo.setBounds(950, 365, 300, 30);
+
+        back = new JButton("Home");
+        back.setBounds(30,30,100,30);
+
+        // Here add label in frame
+        frame1.add(label1);
+        frame1.add(lab1);
+        frame1.add(lab2);
+        frame1.add(lab3);
+        frame1.add(lab4);
+        frame1.add(lab5);
+        frame1.add(lab6);
+        frame1.add(lab7);
+        frame1.add(lab8);
+        frame1.add(lab9);
+        frame1.add(lab10);
+        frame1.add(lab11);
+        frame1.add(lab12);
+        frame1.add(lab13);
+        frame1.add(lab14);
+        frame1.add(lab15);
+        frame1.add(lab16);
+
+        // here add textfield and choice in frame
+
+        frame1.add(text1);
+        frame1.add(text2);
+        frame1.add(text3);
+        frame1.add(text4);
+        frame1.add(text5);
+        frame1.add(ch1);
+        frame1.add(text7);
+        frame1.add(text8);
+        frame1.add(text9);
+        frame1.add(text10);
+        frame1.add(text11);
+        frame1.add(text12);
+        frame1.add(text13);
+        frame1.add(text14);
+        frame1.add(ch2);
+
+        // here add button to frame
+        frame1.add(sub);
+        frame1.add(clear);
+        frame1.add(photo);
+        frame1.add(back);
+
+        // set the properties of frame
+        frame1.setSize(1500, 1500);
+        frame1.setLayout(null);
+        frame1.getContentPane().setBackground(Color.YELLOW);
+        frame1.setVisible(true);
+
+
+
+        // Register the back button with EventListener
+        back.addActionListener(this);
+
+    }
+
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()== back){
+            new First();
+        }
+    }
+
+
+
+}
+
+class Enrollment extends PlaceholderTextField implements ActionListener{
+    JButton back;
+    String placeholder;
+    Enrollment(String placeholder) {
+        super(placeholder);
+        JFrame frame = new JFrame();
+
+        // create label and set its properties
+        JLabel label = new JLabel();
+        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setSize(1250, 100);
+        label.setText("ENROLLMENT DETAILS");
+        label.setFont(new Font("Serif", Font.BOLD, 50));
+
+        JLabel lab1 = new JLabel("Student ID :");
+        lab1.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab1.setBounds(150, 160, 250, 30);
+
+        JLabel lab2 = new JLabel("Student Name :");
+        lab2.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab2.setBounds(150, 200, 250, 30);
+
+        JLabel lab3 = new JLabel("Enrollment NO :");
+        lab3.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab3.setBounds(150, 240, 250, 30);
+
+        JLabel lab4 = new JLabel("Class :");
+        lab4.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab4.setBounds(150, 280, 250, 30);
+
+        // Here add label in frame
+        frame.add(label);
+
+        frame.add(lab1);
+        frame.add(lab2);
+        frame.add(lab3);
+        frame.add(lab4);
+
+        // create TextField and set its properties
+
+        JTextField text1 = new JTextField();
+        text1.setFont(new Font("Serif", Font.PLAIN, 25));
+        text1.setBounds(450, 165, 300, 30);
+
+        JTextField text2 = new JTextField();
+        text2.setFont(new Font("Serif", Font.PLAIN, 25));
+        text2.setBounds(450, 205, 300, 30);
+
+        JTextField text3 = new JTextField();
+        text3.setFont(new Font("Serif", Font.PLAIN, 25));
+        text3.setBounds(450, 245, 300, 30);
+
+        PlaceholderTextField text4 = new PlaceholderTextField("eg : 5th" );
+        text4.setFont(new Font("Serif", Font.PLAIN, 25));
+        text4.setBounds(450, 285, 300, 30);
+
+
+        // create Buttons and set its properties
+        JButton sub = new JButton(" SUBMIT ");
+        sub.setBounds(400, 600, 200, 30);
+
+
+        JButton clear = new JButton(" CLEAR ");
+        clear.setBounds(650, 600, 200, 30);
+
+
+        back = new JButton("Home");
+        back.setBounds(30,30,100,30);
+
+        // here add textfield to frame
+        frame.add(text1);
+        frame.add(text2);
+        frame.add(text3);
+        frame.add(text4);
+
+        // here add button to frame
+        frame.add(sub);
+        frame.add(clear);
+        frame.add(back);
+
+        // set the properties of frame
+        frame.setSize(500, 500);
+        frame.setLayout(null);
+        frame.getContentPane().setBackground(Color.YELLOW);
+        frame.setVisible(true);
+
+
+        // Register the back button with the event Listener
+        back.addActionListener(this);
+
+    }
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()== back){
+            new First();
+        }
+    }
+}
+
+class Academic extends PlaceholderTextField implements ActionListener{
+    JButton back;
+    String placeholder;
+    Academic(String placeholder) {
+
+        super(placeholder);
+        JFrame frame = new JFrame();
+
+        // create label and set its properties
+        JLabel label = new JLabel();
+        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setSize(1250, 100);
+        label.setText("ACADEMIC DETAILS");
+        label.setFont(new Font("Serif", Font.BOLD, 50));
+
+        JLabel lab1 = new JLabel("Student ID :");
+        lab1.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab1.setBounds(150, 160, 250, 30);
+
+        JLabel lab2 = new JLabel("Student Name :");
+        lab2.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab2.setBounds(150, 200, 250, 30);
+
+        JLabel lab3 = new JLabel("Class :");
+        lab3.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab3.setBounds(150, 240, 250, 30);
+
+        JLabel lab4 = new JLabel("Subject :");
+        lab4.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab4.setBounds(150, 280, 250, 30);
+
+
+        JLabel lab5 = new JLabel("Year :");
+        lab5.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab5.setBounds(150, 320, 250, 30);
+
+        JLabel lab6 = new JLabel("Fee :");
+        lab6.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab6.setBounds(150, 360, 250, 30);
+
+        // Here add label in frame
+        frame.add(label);
+
+        frame.add(lab1);
+        frame.add(lab2);
+        frame.add(lab3);
+        frame.add(lab4);
+        frame.add(lab5);
+        frame.add(lab6);
+
+        // create TextField and set its properties
+
+        JTextField text1 = new JTextField();
+        text1.setFont(new Font("Serif", Font.PLAIN, 25));
+        text1.setBounds(450, 165, 300, 30);
+
+        JTextField text2 = new JTextField();
+        text2.setFont(new Font("Serif", Font.PLAIN, 25));
+        text2.setBounds(450, 205, 300, 30);
+
+
+
+        PlaceholderTextField text3 = new PlaceholderTextField("eg:5th");
+        text3.setFont(new Font("Serif", Font.PLAIN, 25));
+        text3.setBounds(450, 245, 300, 30);
+
+        PlaceholderTextField text4 = new PlaceholderTextField("eg : Math,English,Science");
+        text4.setFont(new Font("Serif", Font.PLAIN, 25));
+        text4.setBounds(450, 285, 300, 30);
+
+
+        JTextField text5 = new JTextField();
+        text5.setFont(new Font("Serif", Font.PLAIN, 25));
+        text5.setBounds(450, 325, 300, 30);
+
+        JTextField text6 = new JTextField();
+        text6.setFont(new Font("Serif", Font.PLAIN, 25));
+        text6.setBounds(450, 365, 300, 30);
+
+        
+        // add submit and clear button
+
+        JButton sub = new JButton(" SUBMIT ");
+        sub.setBounds(400, 600, 200, 30);
+
+        JButton clear = new JButton(" CLEAR ");
+        clear.setBounds(650, 600, 200, 30);
+
+        back = new JButton("Home");
+        back.setBounds(30,30,100,30);
+
+        // here add textfield to frame
+        frame.add(text1);
+        frame.add(text2);
+        frame.add(text3);
+        frame.add(text4);
+        frame.add(text5);
+        frame.add(text6);
+
+        // here add button to frame
+        frame.add(sub);
+        frame.add(clear);
+        frame.add(back);
+
+        // set the properties of frame
+        frame.setSize(500, 500);
+        frame.setLayout(null);
+        frame.getContentPane().setBackground(Color.YELLOW);
+        frame.setVisible(true);
+
+
+        // Register back component with event Listener
+        back.addActionListener(this);
+    }
+
+
+    public void actionPerformed(ActionEvent e ){
+        if(e.getSource()== back){
+            new First();
+        }
+    }
+}
+
+class Fee extends PlaceholderTextField implements ActionListener {
+    JButton back;
+
+    String placeholder;
+    Fee(String placeholder) {
+        super(placeholder);
+        JFrame frame = new JFrame();
+
+        // create label and set its properties
+        JLabel label = new JLabel();
+        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setSize(1250, 100);
+        label.setText("FEE DETAILS");
+        label.setFont(new Font("Serif", Font.BOLD, 50));
+
+        JLabel lab1 = new JLabel("Student ID :");
+        lab1.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab1.setBounds(150, 160, 250, 30);
+
+        JLabel lab2 = new JLabel("Student Name :");
+        lab2.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab2.setBounds(150, 200, 250, 30);
+
+        JLabel lab3 = new JLabel("Class:");
+        lab3.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab3.setBounds(150, 240, 250, 30);
+
+        JLabel lab4 = new JLabel("Paid Fee :");
+        lab4.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab4.setBounds(150, 280, 250, 30);
+
+        JLabel lab5 = new JLabel("Balance :");
+        lab5.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab5.setBounds(150, 320, 250, 30);
+
+        // Here add label in frame
+        frame.add(label);
+
+        frame.add(lab1);
+        frame.add(lab2);
+        frame.add(lab3);
+        frame.add(lab4);
+        frame.add(lab5);
+
+        // create TextField and set its properties
+
+        JTextField text1 = new JTextField();
+        text1.setFont(new Font("Serif", Font.PLAIN, 25));
+        text1.setBounds(450, 165, 300, 30);
+
+        JTextField text2 = new JTextField();
+        text2.setFont(new Font("Serif", Font.PLAIN, 25));
+        text2.setBounds(450, 205, 300, 30);
+
+        PlaceholderTextField text3 = new PlaceholderTextField("eg : 5th");
+        text3.setFont(new Font("Serif", Font.PLAIN, 25));
+        text3.setBounds(450, 245, 300, 30);
+
+        JTextField text4 = new JTextField();
+        text4.setFont(new Font("Serif", Font.PLAIN, 25));
+        text4.setBounds(450, 285, 300, 30);
+
+        JTextField text5 = new JTextField();
+        text5.setFont(new Font("Serif", Font.PLAIN, 25));
+        text5.setBounds(450, 325, 300, 30);
+
+
+
+        // create button and set its properties
+        JButton sub = new JButton(" SUBMIT ");
+        sub.setBounds(400, 600, 200, 30);
+
+        JButton clear = new JButton(" CLEAR ");
+        clear.setBounds(650, 600, 200, 30);
+
+        back = new JButton("Home");
+        back.setBounds(30,30,100,30);
+
+        // here add textfield to frame
+        frame.add(text1);
+        frame.add(text2);
+        frame.add(text3);
+        frame.add(text4);
+        frame.add(text5);
+
+        // here add button to frame
+        frame.add(sub);
+        frame.add(clear);
+        frame.add(back);
+
+        // set the properties of frame
+        frame.setSize(500, 500);
+        frame.setLayout(null);
+        frame.getContentPane().setBackground(Color.YELLOW);
+        frame.setVisible(true);
+
+
+        // Register the back button with event Listener
+        back.addActionListener(this);
+    }
+
+    // Event handling
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()== back){
+            new First();
+        }
+    }
+}
+
+class Teacher implements ActionListener{
+
+    JButton back;
+    Teacher() {
+
+        // create a frame
+        JFrame frame2 = new JFrame();
+
+        // create label and set its properties
+        JLabel label2 = new JLabel();
+        label2.setHorizontalAlignment(JLabel.CENTER);
+        label2.setSize(1250, 100);
+        label2.setText("TEACHER  REGISTRATION  FORM");
+        label2.setFont(new Font("Serif", Font.BOLD, 50));
+
+        JLabel lab1 = new JLabel("Teacher ID :");
+        lab1.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab1.setBounds(70, 160, 250, 30);
+
+        JLabel lab2 = new JLabel("Teacher Name :");
+        lab2.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab2.setBounds(70, 200, 250, 30);
+
+        JLabel lab3 = new JLabel("Father Name :");
+        lab3.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab3.setBounds(70, 240, 250, 30);
+
+        JLabel lab4 = new JLabel("Mother Name :");
+        lab4.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab4.setBounds(70, 280, 250, 30);
+
+        JLabel lab5 = new JLabel("Date Of Birth :");
+        lab5.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab5.setBounds(70, 320, 250, 30);
+
+        JLabel lab6 = new JLabel("Gender :");
+        lab6.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab6.setBounds(70, 360, 250, 30);
+
+        JLabel lab7 = new JLabel("Mobile_Number1 :");
+        lab7.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab7.setBounds(70, 400, 250, 30);
+
+        JLabel lab8 = new JLabel("Mobile Number2 :");
+        lab8.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab8.setBounds(70, 440, 250, 30);
+
+        JLabel lab9 = new JLabel("Joining Date :");
+        lab9.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab9.setBounds(70, 480, 250, 30);
+
+        JLabel lab10 = new JLabel("Address :");
+        lab10.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab10.setBounds(70, 520, 250, 30);
+
+        JLabel lab11 = new JLabel("Teacher's Aaadhar NO :");
+        lab11.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab11.setBounds(700, 160, 250, 30);
+
+        JLabel lab12 = new JLabel("Family ID :");
+        lab12.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab12.setBounds(700, 200, 250, 30);
+
+        JLabel lab13 = new JLabel("Qualification :");
+        lab13.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab13.setBounds(700, 240, 250, 30);
+
+        JLabel lab14 = new JLabel("Experience :");
+        lab14.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab14.setBounds(700, 280, 250, 30);
+
+        JLabel lab15 = new JLabel("Account NO :");
+        lab15.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab15.setBounds(700, 320, 250, 30);
+
+        JLabel lab16 = new JLabel("Teacher's Photo :");
+        lab16.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab16.setBounds(700, 360, 250, 30);
+
+        // create TextField and set its properties
+
+        JTextField text1 = new JTextField();
+        text1.setFont(new Font("Serif", Font.PLAIN, 25));
+        text1.setBounds(300, 165, 300, 30);
+
+        JTextField text2 = new JTextField();
+        text2.setFont(new Font("Serif", Font.PLAIN, 25));
+        text2.setBounds(300, 205, 300, 30);
+
+        JTextField text3 = new JTextField();
+        text3.setFont(new Font("Serif", Font.PLAIN, 25));
+        text3.setBounds(300, 245, 300, 30);
+
+        JTextField text4 = new JTextField();
+        text4.setFont(new Font("Serif", Font.PLAIN, 25));
+        text4.setBounds(300, 285, 300, 30);
+
+        PlaceholderTextField text5 = new PlaceholderTextField("YYYY-MM-DD");
+        text5.setFont(new Font("Serif", Font.PLAIN, 25));
+        text5.setBounds(300, 325, 300, 30);
+
+        // ComboBox for gender
+        String gender[] = { "Male", "Female", "Other" };
+        JComboBox<String> ch1 = new JComboBox<>(gender);
+        ch1.setBounds(300, 365, 300, 30);
+
+        JTextField text7 = new JTextField();
+        text7.setFont(new Font("Serif", Font.PLAIN, 25));
+        text7.setBounds(300, 405, 300, 30);
+
+        JTextField text8 = new JTextField();
+        text8.setFont(new Font("Serif", Font.PLAIN, 25));
+        text8.setBounds(300, 445, 300, 30);
+
+        PlaceholderTextField text9 = new PlaceholderTextField("YYYY-MM-DD");
+        text9.setFont(new Font("Serif", Font.PLAIN, 25));
+        text9.setBounds(300, 485, 300, 30);
+
+        JTextField text10 = new JTextField();
+        text10.setFont(new Font("Serif", Font.PLAIN, 25));
+        text10.setBounds(300, 525, 300, 30);
+
+        JTextField text12 = new JTextField();
+        text12.setFont(new Font("Serif", Font.PLAIN, 25));
+        text12.setBounds(950, 205, 300, 30);
+
+        JTextField text11 = new JTextField();
+        text11.setFont(new Font("Serif", Font.PLAIN, 25));
+        text11.setBounds(950, 165, 300, 30);
+
+        JTextField text13 = new JTextField();
+        text13.setFont(new Font("Serif", Font.PLAIN, 25));
+        text13.setBounds(950, 245, 300, 30);
+
+        JTextField text14 = new JTextField();
+        text14.setFont(new Font("Serif", Font.PLAIN, 25));
+        text14.setBounds(950, 285, 300, 30);
+
+        JTextField text15 = new JTextField();
+        text15.setFont(new Font("Serif", Font.PLAIN, 25));
+        text15.setBounds(950, 325, 300, 30);
+
+        // Here add label in frame
+        frame2.add(label2);
+        frame2.add(lab1);
+        frame2.add(lab2);
+        frame2.add(lab3);
+        frame2.add(lab4);
+        frame2.add(lab5);
+        frame2.add(lab6);
+        frame2.add(lab7);
+        frame2.add(lab8);
+        frame2.add(lab9);
+        frame2.add(lab10);
+        frame2.add(lab11);
+        frame2.add(lab12);
+        frame2.add(lab13);
+        frame2.add(lab14);
+        frame2.add(lab15);
+        frame2.add(lab16);
+
+        // here add textField to frame
+
+        frame2.add(text1);
+        frame2.add(text2);
+        frame2.add(text3);
+        frame2.add(text4);
+        frame2.add(text5);
+        frame2.add(ch1);
+        frame2.add(text7);
+        frame2.add(text8);
+        frame2.add(text9);
+        frame2.add(text10);
+        frame2.add(text11);
+        frame2.add(text12);
+        frame2.add(text13);
+        frame2.add(text14);
+        frame2.add(text15);
+
+        // create buttons for submit and clear
+
+        JButton sub = new JButton(" SUBMIT ");
+        sub.setBounds(400, 600, 200, 30);
+
+        JButton clear = new JButton(" CLEAR ");
+        clear.setBounds(650, 600, 200, 30);
+
+        JButton photo = new JButton("Upload Photo");
+        photo.setBounds(950, 365, 300, 30);
+
+
+        back = new JButton("Home");
+        back.setBounds(30,30,100,30);
+
+
+        // here add button to frame
+        frame2.add(sub);
+        frame2.add(clear);
+        frame2.add(photo);
+        frame2.add(back);
+
+        // set the properties of frame
+        frame2.setSize(500, 500);
+        frame2.setLayout(null);
+        frame2.getContentPane().setBackground(Color.YELLOW);
+        frame2.setVisible(true);
+
+
+        // Register the  button component with frame
+        back.addActionListener(this);
+
+    }
+
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()== back){
+            new First();
+        }
+    }
+}
+
+class TeacherSalaryStructure extends PlaceholderTextField implements ActionListener{
+    JButton back;
+    String placeholder;
+    TeacherSalaryStructure(String placeholder) {
+
+        super(placeholder);
+        JFrame frame = new JFrame();
+
+        // create label and set its properties
+        JLabel label = new JLabel();
+        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setSize(1250, 100);
+        label.setText("SALARY STRUCTURE");
+        label.setFont(new Font("Serif", Font.BOLD, 50));
+
+        JLabel lab1 = new JLabel("Teacher ID :");
+        lab1.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab1.setBounds(150, 160, 250, 30);
+
+        JLabel lab2 = new JLabel("Teacher Name :");
+        lab2.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab2.setBounds(150, 200, 250, 30);
+
+        JLabel lab3 = new JLabel("Salary :");
+        lab3.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab3.setBounds(150, 240, 250, 30);
+
+        JLabel lab4 = new JLabel("Month :");
+        lab4.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab4.setBounds(150, 280, 250, 30);
+
+
+        JLabel lab5 = new JLabel("Year :");
+        lab5.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab5.setBounds(150, 320, 250, 30);
+
+       
+
+        // Here add label in frame
+        frame.add(label);
+
+        frame.add(lab1);
+        frame.add(lab2);
+        frame.add(lab3);
+        frame.add(lab4);
+        frame.add(lab5);
+
+        // create TextField and set its properties
+
+        JTextField text1 = new JTextField();
+        text1.setFont(new Font("Serif", Font.PLAIN, 25));
+        text1.setBounds(450, 165, 300, 30);
+
+        JTextField text2 = new JTextField();
+        text2.setFont(new Font("Serif", Font.PLAIN, 25));
+        text2.setBounds(450, 205, 300, 30);
+
+
+
+        JTextField text3 = new JTextField();
+        text3.setFont(new Font("Serif", Font.PLAIN, 25));
+        text3.setBounds(450, 245, 300, 30);
+
+        PlaceholderTextField text4 = new PlaceholderTextField("eg : January");
+        text4.setFont(new Font("Serif", Font.PLAIN, 25));
+        text4.setBounds(450, 285, 300, 30);
+
+
+        JTextField text5 = new JTextField();
+        text5.setFont(new Font("Serif", Font.PLAIN, 25));
+        text5.setBounds(450, 325, 300, 30);
+
+        
+        // add submit and clear button
+
+        JButton sub = new JButton(" SUBMIT ");
+        sub.setBounds(400, 600, 200, 30);
+
+        JButton clear = new JButton(" CLEAR ");
+        clear.setBounds(650, 600, 200, 30);
+
+
+        back = new JButton("Home");
+        back.setBounds(30,30,100,30);
+
+        // here add textfield to frame
+        frame.add(text1);
+        frame.add(text2);
+        frame.add(text3);
+        frame.add(text4);
+        frame.add(text5);
+
+        // here add button to frame
+        frame.add(sub);
+        frame.add(clear);
+        frame.add(back);
+
+
+        // set the properties of frame
+        frame.setSize(500, 500);
+        frame.setLayout(null);
+        frame.getContentPane().setBackground(Color.YELLOW);
+        frame.setVisible(true);
+
+
+        // Register the component with EventListener
+        back.addActionListener(this);
+    }
+
+    //Event handling
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()== back){
+            new First();
+        }
+    }
+}
+
+class TeacherSalaryDetails extends PlaceholderTextField implements ActionListener{
+    JButton back;
+    String placeholder;
+    TeacherSalaryDetails(String placeholder) {
+
+        super(placeholder);
+        JFrame frame = new JFrame();
+
+        // create label and set its properties
+        JLabel label = new JLabel();
+        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setSize(1250, 100);
+        label.setText("SALARY DETAILS");
+        label.setFont(new Font("Serif", Font.BOLD, 50));
+
+        JLabel lab1 = new JLabel("Teacher ID :");
+        lab1.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab1.setBounds(150, 160, 250, 30);
+
+        JLabel lab2 = new JLabel("Teacher Name :");
+        lab2.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab2.setBounds(150, 200, 250, 30);
+
+        JLabel lab3 = new JLabel("Salary Paid :");
+        lab3.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab3.setBounds(150, 240, 250, 30);
+
+        JLabel lab4 = new JLabel("Month :");
+        lab4.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab4.setBounds(150, 280, 250, 30);
+
+
+        JLabel lab5 = new JLabel("Year :");
+        lab5.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab5.setBounds(150, 320, 250, 30);
+
+
+        // Here add label in frame
+        frame.add(label);
+
+        frame.add(lab1);
+        frame.add(lab2);
+        frame.add(lab3);
+        frame.add(lab4);
+        frame.add(lab5);
+
+        // create TextField and set its properties
+
+        JTextField text1 = new JTextField();
+        text1.setFont(new Font("Serif", Font.PLAIN, 25));
+        text1.setBounds(450, 165, 300, 30);
+
+        JTextField text2 = new JTextField();
+        text2.setFont(new Font("Serif", Font.PLAIN, 25));
+        text2.setBounds(450, 205, 300, 30);
+
+
+
+        JTextField text3 = new JTextField();
+        text3.setFont(new Font("Serif", Font.PLAIN, 25));
+        text3.setBounds(450, 245, 300, 30);
+
+        PlaceholderTextField text4 = new PlaceholderTextField("eg : January");
+        text4.setFont(new Font("Serif", Font.PLAIN, 25));
+        text4.setBounds(450, 285, 300, 30);
+
+
+        JTextField text5 = new JTextField();
+        text5.setFont(new Font("Serif", Font.PLAIN, 25));
+        text5.setBounds(450, 325, 300, 30);
+
+        
+        // add submit and clear button
+
+        JButton sub = new JButton(" SUBMIT ");
+        sub.setBounds(400, 600, 200, 30);
+
+        JButton clear = new JButton(" CLEAR ");
+        clear.setBounds(650, 600, 200, 30);
+
+        back = new JButton("Home");
+        back.setBounds(30,30,100,30);
+
+        // here add textfield to frame
+        frame.add(text1);
+        frame.add(text2);
+        frame.add(text3);
+        frame.add(text4);
+        frame.add(text5);
+
+        // here add button to frame
+        frame.add(sub);
+        frame.add(clear);
+        frame.add(back);
+
+        // set the properties of frame
+        frame.setSize(500, 500);
+        frame.setLayout(null);
+        frame.getContentPane().setBackground(Color.YELLOW);
+        frame.setVisible(true);
+
+        // Register the button with EventListener
+        back.addActionListener(this);
+    }
+
+    // Event handlling
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()== back){
+            new First();
+        }
+    }
+}
+
+
+class OtherEmployee implements ActionListener{
+    JButton back;
+    OtherEmployee() {
+        JFrame frame3 = new JFrame();
+
+        JLabel label3 = new JLabel();
+        label3.setHorizontalAlignment(JLabel.CENTER);
+        label3.setSize(1250, 100);
+        label3.setText("EMPLOYEE  REGISTRATION  FORM ");
+        label3.setFont(new Font("Serif", Font.BOLD, 50));
+
+        JLabel lab1 = new JLabel("Employee ID :");
+        lab1.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab1.setBounds(70, 160, 250, 30);
+
+        JLabel lab2 = new JLabel("Employee Name :");
+        lab2.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab2.setBounds(70, 200, 250, 30);
+
+        JLabel lab3 = new JLabel("Father Name :");
+        lab3.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab3.setBounds(70, 240, 250, 30);
+
+        JLabel lab4 = new JLabel("Mother_Name :");
+        lab4.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab4.setBounds(70, 280, 250, 30);
+
+        JLabel lab5 = new JLabel("Date Of Birth :");
+        lab5.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab5.setBounds(70, 320, 250, 30);
+
+        JLabel lab6 = new JLabel("Gender :");
+        lab6.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab6.setBounds(70, 360, 250, 30);
+
+        JLabel lab7 = new JLabel("Mobile Number1 :");
+        lab7.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab7.setBounds(70, 400, 250, 30);
+
+        JLabel lab8 = new JLabel("Mobile Number2 :");
+        lab8.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab8.setBounds(70, 440, 250, 30);
+
+        JLabel lab9 = new JLabel("Joining Date :");
+        lab9.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab9.setBounds(70, 480, 250, 30);
+
+        JLabel lab10 = new JLabel("Address :");
+        lab10.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab10.setBounds(70, 520, 250, 30);
+
+        JLabel lab11 = new JLabel("Employee's Aaadhar NO:");
+        lab11.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab11.setBounds(700, 160, 258, 30);
+
+        JLabel lab12 = new JLabel("Family ID :");
+        lab12.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab12.setBounds(700, 200, 250, 30);
+
+        JLabel lab13 = new JLabel("Qualification :");
+        lab13.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab13.setBounds(700, 240, 250, 30);
+
+        JLabel lab14 = new JLabel("Job :");
+        lab14.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab14.setBounds(700, 280, 250, 30);
+
+        JLabel lab15 = new JLabel("Account NO :");
+        lab15.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab15.setBounds(700, 320, 250, 30);
+
+        JLabel lab16 = new JLabel("Employee's Photo :");
+        lab16.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab16.setBounds(700, 360, 250, 30);
+
+        // create TextField and set its properties
+
+        JTextField text1 = new JTextField();
+        text1.setFont(new Font("Serif", Font.PLAIN, 25));
+        text1.setBounds(300, 165, 300, 30);
+
+        JTextField text2 = new JTextField();
+        text2.setFont(new Font("Serif", Font.PLAIN, 25));
+        text2.setBounds(300, 205, 300, 30);
+
+        JTextField text3 = new JTextField();
+        text3.setFont(new Font("Serif", Font.PLAIN, 25));
+        text3.setBounds(300, 245, 300, 30);
+
+        JTextField text4 = new JTextField();
+        text4.setFont(new Font("Serif", Font.PLAIN, 25));
+        text4.setBounds(300, 285, 300, 30);
+
+        PlaceholderTextField text5 = new PlaceholderTextField("YYYY-MM-DD");
+        text5.setFont(new Font("Serif", Font.PLAIN, 25));
+        text5.setBounds(300, 325, 300, 30);
+
+        // ComboBox for gender
+        String gender[] = { "Male", "Female", "Other" };
+        JComboBox<String> ch1 = new JComboBox<>(gender);
+        ch1.setBounds(300, 365, 300, 30);
+
+        JTextField text7 = new JTextField();
+        text7.setFont(new Font("Serif", Font.PLAIN, 25));
+        text7.setBounds(300, 405, 300, 30);
+
+        JTextField text8 = new JTextField();
+        text8.setFont(new Font("Serif", Font.PLAIN, 25));
+        text8.setBounds(300, 445, 300, 30);
+
+        PlaceholderTextField text9 = new PlaceholderTextField("YYYY-MM-DD");
+        text9.setFont(new Font("Serif", Font.PLAIN, 25));
+        text9.setBounds(300, 485, 300, 30);
+
+        JTextField text10 = new JTextField();
+        text10.setFont(new Font("Serif", Font.PLAIN, 25));
+        text10.setBounds(300, 525, 300, 30);
+
+        JTextField text11 = new JTextField();
+        text11.setFont(new Font("Serif", Font.PLAIN, 25));
+        text11.setBounds(960, 165, 300, 30);
+
+        JTextField text12 = new JTextField();
+        text12.setFont(new Font("Serif", Font.PLAIN, 25));
+        text12.setBounds(960, 205, 300, 30);
+
+        JTextField text13 = new JTextField();
+        text13.setFont(new Font("Serif", Font.PLAIN, 25));
+        text13.setBounds(960, 245, 300, 30);
+
+        JTextField text14 = new JTextField();
+        text14.setFont(new Font("Serif", Font.PLAIN, 25));
+        text14.setBounds(960, 285, 300, 30);
+
+        JTextField text15 = new JTextField();
+        text15.setFont(new Font("Serif", Font.PLAIN, 25));
+        text15.setBounds(960, 325, 300, 30);
+
+        // Here add label in frame
+        frame3.add(label3);
+        frame3.add(lab1);
+        frame3.add(lab2);
+        frame3.add(lab3);
+        frame3.add(lab4);
+        frame3.add(lab5);
+        frame3.add(lab6);
+        frame3.add(lab7);
+        frame3.add(lab8);
+        frame3.add(lab9);
+        frame3.add(lab10);
+        frame3.add(lab11);
+        frame3.add(lab12);
+        frame3.add(lab13);
+        frame3.add(lab14);
+        frame3.add(lab15);
+        frame3.add(lab16);
+
+        // here add textField
+
+        frame3.add(text1);
+        frame3.add(text2);
+        frame3.add(text3);
+        frame3.add(text4);
+        frame3.add(text5);
+        frame3.add(ch1);
+        frame3.add(text7);
+        frame3.add(text8);
+        frame3.add(text9);
+        frame3.add(text10);
+        frame3.add(text11);
+        frame3.add(text12);
+        frame3.add(text13);
+        frame3.add(text14);
+        frame3.add(text15);
+
+        // create buttons for submit and clear
+
+        JButton sub = new JButton(" SUBMIT ");
+        sub.setBounds(400, 600, 200, 30);
+
+        JButton clear = new JButton(" CLEAR ");
+        clear.setBounds(650, 600, 200, 30);
+
+        JButton photo = new JButton("Upload Photo");
+        photo.setBounds(960, 365, 300, 30);
+
+        back = new JButton("Home");
+        back.setBounds(30,30,100,30);
+
+        // here add button to frame
+        frame3.add(sub);
+        frame3.add(clear);
+        frame3.add(photo);
+        frame3.add(back);
+
+        // set the properties of frame
+        frame3.setSize(500, 500);
+        frame3.setLayout(null);
+        frame3.getContentPane().setBackground(Color.YELLOW);
+        frame3.setVisible(true);
+
+
+        // Register the button with Event listener
+        back.addActionListener(this);
+    }
+
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()== back){
+            new First();
+        }
+    }
+}
+
+
+
+class EmployeeSalaryStructure extends PlaceholderTextField implements ActionListener{
+    JButton back;
+    String placeholder;
+    EmployeeSalaryStructure(String placeholder) {
+
+        super(placeholder);
+        JFrame frame = new JFrame();
+
+        // create label and set its properties
+        JLabel label = new JLabel();
+        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setSize(1250, 100);
+        label.setText("SALARY STRUCTURE");
+        label.setFont(new Font("Serif", Font.BOLD, 50));
+
+        JLabel lab1 = new JLabel("Employee ID :");
+        lab1.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab1.setBounds(150, 160, 250, 30);
+
+        JLabel lab2 = new JLabel("Employee Name :");
+        lab2.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab2.setBounds(150, 200, 250, 30);
+
+        JLabel lab3 = new JLabel("Salary :");
+        lab3.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab3.setBounds(150, 240, 250, 30);
+
+        JLabel lab4 = new JLabel("Month :");
+        lab4.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab4.setBounds(150, 280, 250, 30);
+
+
+        JLabel lab5 = new JLabel("Year :");
+        lab5.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab5.setBounds(150, 320, 250, 30);
+
+       
+
+        // Here add label in frame
+        frame.add(label);
+
+        frame.add(lab1);
+        frame.add(lab2);
+        frame.add(lab3);
+        frame.add(lab4);
+        frame.add(lab5);
+
+        // create TextField and set its properties
+
+        JTextField text1 = new JTextField();
+        text1.setFont(new Font("Serif", Font.PLAIN, 25));
+        text1.setBounds(450, 165, 300, 30);
+
+        JTextField text2 = new JTextField();
+        text2.setFont(new Font("Serif", Font.PLAIN, 25));
+        text2.setBounds(450, 205, 300, 30);
+
+
+
+        JTextField text3 = new JTextField();
+        text3.setFont(new Font("Serif", Font.PLAIN, 25));
+        text3.setBounds(450, 245, 300, 30);
+
+        PlaceholderTextField text4 = new PlaceholderTextField("eg : January");
+        text4.setFont(new Font("Serif", Font.PLAIN, 25));
+        text4.setBounds(450, 285, 300, 30);
+
+
+        JTextField text5 = new JTextField();
+        text5.setFont(new Font("Serif", Font.PLAIN, 25));
+        text5.setBounds(450, 325, 300, 30);
+
+        
+        // add submit and clear button
+
+        JButton sub = new JButton(" SUBMIT ");
+        sub.setBounds(400, 600, 200, 30);
+
+        JButton clear = new JButton(" CLEAR ");
+        clear.setBounds(650, 600, 200, 30);
+
+        back = new JButton("Home");
+        back.setBounds(30,30,100,30);
+
+        // here add textfield to frame
+        frame.add(text1);
+        frame.add(text2);
+        frame.add(text3);
+        frame.add(text4);
+        frame.add(text5);
+
+        // here add button to frame
+        frame.add(sub);
+        frame.add(clear);
+        frame.add(back);
+
+        // set the properties of frame
+        frame.setSize(500, 500);
+        frame.setLayout(null);
+        frame.getContentPane().setBackground(Color.YELLOW);
+        frame.setVisible(true);
+
+        // Register the Button with the Event Listener
+        back.addActionListener(this);
+    }
+
+    // Event handling
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()== back){
+            new First();
+        }
+    }
+}
+
+
+
+
+class EmployeeSalaryDetails extends PlaceholderTextField implements ActionListener{
+
+    JButton back;
+    String placeholder;
+
+    EmployeeSalaryDetails(String placeholder) {
+
+        super(placeholder);
+        JFrame frame = new JFrame();
+
+        // create label and set its properties
+        JLabel label = new JLabel();
+        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setSize(1250, 100);
+        label.setText("SALARY DETAILS");
+        label.setFont(new Font("Serif", Font.BOLD, 50));
+
+        JLabel lab1 = new JLabel("Employee ID :");
+        lab1.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab1.setBounds(150, 160, 250, 30);
+
+        JLabel lab2 = new JLabel("Employee Name :");
+        lab2.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab2.setBounds(150, 200, 250, 30);
+
+        JLabel lab3 = new JLabel("Salary Paid :");
+        lab3.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab3.setBounds(150, 240, 250, 30);
+
+        JLabel lab4 = new JLabel("Month :");
+        lab4.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab4.setBounds(150, 280, 250, 30);
+
+
+        JLabel lab5 = new JLabel("Year :");
+        lab5.setFont(new Font("Serif", Font.PLAIN, 25));
+        lab5.setBounds(150, 320, 250, 30);
+
+
+        // Here add label in frame
+        frame.add(label);
+
+        frame.add(lab1);
+        frame.add(lab2);
+        frame.add(lab3);
+        frame.add(lab4);
+        frame.add(lab5);
+
+        // create TextField and set its properties
+
+        JTextField text1 = new JTextField();
+        text1.setFont(new Font("Serif", Font.PLAIN, 25));
+        text1.setBounds(450, 165, 300, 30);
+
+        JTextField text2 = new JTextField();
+        text2.setFont(new Font("Serif", Font.PLAIN, 25));
+        text2.setBounds(450, 205, 300, 30);
+
+
+
+        JTextField text3 = new JTextField();
+        text3.setFont(new Font("Serif", Font.PLAIN, 25));
+        text3.setBounds(450, 245, 300, 30);
+
+        PlaceholderTextField text4 = new PlaceholderTextField("eg : January");
+        text4.setFont(new Font("Serif", Font.PLAIN, 25));
+        text4.setBounds(450, 285, 300, 30);
+
+
+        JTextField text5 = new JTextField();
+        text5.setFont(new Font("Serif", Font.PLAIN, 25));
+        text5.setBounds(450, 325, 300, 30);
+
+        
+        // add submit and clear button
+
+        JButton sub = new JButton(" SUBMIT ");
+        sub.setBounds(400, 600, 200, 30);
+
+        JButton clear = new JButton(" CLEAR ");
+        clear.setBounds(650, 600, 200, 30);
+
+        back = new JButton("Home");
+        back.setBounds(30,30,100,30);
+
+        // here add textfield to frame
+        frame.add(text1);
+        frame.add(text2);
+        frame.add(text3);
+        frame.add(text4);
+        frame.add(text5);
+
+        // here add button to frame
+        frame.add(sub);
+        frame.add(clear);
+        frame.add(back);
+
+        // set the properties of frame
+        frame.setSize(500, 500);
+        frame.setLayout(null);
+        frame.getContentPane().setBackground(Color.YELLOW);
+        frame.setVisible(true);
+
+
+        // Register the button with event Listener
+        back.addActionListener(this);
+    }
+
+    // Event handling
+    public void actionPerformed(ActionEvent e){
+        if(e.getSource()== back){
+            new First();
+        }
+    }
+}
+
+public class App {
+
+    public static void main(String[] args) {
+        new First();
+    }
+}
