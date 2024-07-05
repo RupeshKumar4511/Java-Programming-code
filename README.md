@@ -1,5 +1,10 @@
 # Java-Programming
 
+# Working of Compiler
+![image](https://github.com/RupeshKumar4511/Java-Programming-code/assets/149661006/59cd432e-a0b0-4910-9e7c-2ecf9d2c93a8)
+
+# JVM Archietecture 
+![image](https://github.com/RupeshKumar4511/Java-Programming-code/assets/149661006/5df0c4de-2250-420f-8769-22628b455283)
 
 # Antanomy of java
 When thejVM starts running, it looks for the class you give it at the command line. Then it starts looking for a specially-Written method that looks
