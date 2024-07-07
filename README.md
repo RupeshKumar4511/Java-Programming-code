@@ -198,7 +198,7 @@ Variable is name given to memory given to memory location.
 
 <br>
 
-#Loop Variables (Block Scope) 
+# Loop Variables (Block Scope) 
 A variable declared inside pair of brackets “{” and “}” in a method has scope within the brackets only.
 <br>
 public class Test
@@ -244,6 +244,61 @@ Note : For a variable to be read after the termination of a loop, It must be dec
 # Important Point from Static variable :
 static variable can be overrided inside another static or non static method.But static variable get memory only once.
 
+# Methods to Take Input in Java
+There are two ways by which we can take Java input from the user or from a file
+<br>
+1.BufferedReader Class
+<br>
+2.Scanner Class
+<br>
+3.Using console
+<br>
+// Using Console to input data from user
+<br>
+String name = System.console().readLine();
+
+# important point from Scanner class and BufferReader class:
+The Scanner class reads an entire line and divides the line into tokens. Tokens are small elements that have some meaning to the Java compiler. For example, Suppose there is an input string: How are you
+In this case, the scanner object will read the entire line and divides the string into tokens: “How”, “are” and “you”. The object then iterates over each token and reads each token using its different methods.
+<br>
+But BufferReader Reads text from a character-input stream (simply reads sequence of character ). That's why it is faster than Scanner class.
+<br>
+BufferReader class always wraps around FileReader class(in case of Text file) or InputStreamReader (in case of taking input from keyboad).
+``` bash
+
+public class Test
+{
+  
+    public static void main(String args[]) 
+    {
+        try{
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            String str = br.readLine();
+            System.out.println(str);
+            
+        }
+    catch(Exception e){
+     System.out.println(e);
+    }
+        
+    }
+}
+```
+<br>
+
+# InputStreamReader 
+It reads bytes and decodes them into characters using a specified charset.
+
+# Parts of System.out.println()
+The statement can be broken into 3 parts which can be understood separately:
+<br>
+
+System: It is a final class defined in the java.lang package.
+<br>
+out: This is an instance of PrintStream type, which is a public and static member field of the System class.
+<br>
+println(): As all instances of the PrintStream class have a public method println().
+<br>
 # while loop 
 while(true){
 }
@@ -268,7 +323,7 @@ String str = a.toString();
 # Arrays
 How to get max value from an array
 
-int max = Arrays.stream(arr).max().getAsInt();
+**int max = Arrays.stream(arr).max().getAsInt();**
 
 Here 
 Arrays.stream(arr):
@@ -285,6 +340,7 @@ Retrieves the value from the OptionalInt. Since we're assuming the array is not 
 
 
 # how to use for else in java ;
+``` bash
 int num =25;
 boolean found = false;
 for(int i =2;i<num;i++){
@@ -300,7 +356,7 @@ if (!found){
 
 }
 
-
+```
 
 
 # concepts of stack memory and heap memory
