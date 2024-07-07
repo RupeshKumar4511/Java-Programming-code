@@ -48,7 +48,7 @@ System.out.println("some problem  occured");
             
         if(lines.contains("//")){
         int index = lines.indexOf("//");
-        int index1 = lines.indexOf(".",index);
+        int index1 = lines.indexOf("\n",index);
         System.out.println(lines.substring(index,index1+1));
  
         }      
