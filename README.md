@@ -167,6 +167,36 @@ example=>
 # why size of char is 2 bytes in java?
 Java uses the Unicode system not the ASCII code System and to represent the Unicode system 8 bits is not enough to represent all characters so Java uses 2 bytes for characters.
 
+
+# Enum :
+Enum is like a class which is used to define a set of fixed constants.
+
+An enum can, just like a class, have attributes and methods. The only difference is that enum constants are public, static and final (unchangeable - cannot be overridden).
+<br>
+An enum cannot be used to create objects, and it cannot extend other classes (but it can implement interfaces).
+<br>
+Why And When To Use Enums?
+<br>
+Use enums when you have values that you know aren't going to change, like month days, days, colors, deck of cards, etc.
+<br>
+Example =>
+<br>
+// A Java program to demonstrate that we can have
+// main() inside enum class.
+```bash
+enum Color {
+	RED,
+	GREEN,
+	BLUE;
+
+	// Driver method
+	public static void main(String[] args)
+	{
+		Color c1 = Color.RED;
+		System.out.println(c1);
+	}
+}
+```
 # Keywords:
 There are 67 keywords and 3 literals in java.
 <br>
