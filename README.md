@@ -13,13 +13,15 @@ That's why java is called Plateform independent.
 <br>
 2. Object Oriented : Java is an object-oriented programming language.Object-oriented means we organize our application programs as a combination of different types of objects that incorporate both data and behavior.Everything in java is represented in Class as an object including the main function.
 
-<rb>
+<br>
+
 3.Secured : 
 Java is best known for its security. With Java, we can develop virus-free systems. Java is secured because:
-
+<br>
 No explicit pointer
 Java Programs run inside a virtual machine sandbox
 <br>
+
 Classloader: Classloader in Java is a part of the Java Runtime Environment (JRE) which is used to load Java classes into the Java Virtual Machine dynamically. It adds security by separating the package for the classes of the local file system from those that are imported from network sources.
 <br>
 Bytecode Verifier: It checks the code fragments for illegal code that can violate access rights to objects.
@@ -142,6 +144,7 @@ Remember: In Java SE 8 and later, we can use the int data type to represent an u
 Remember: In Java SE 8 and later, you can use the long data type to represent an unsigned 64-bit long, which has a minimum value of 0 and a maximum value of 2 raise to power 64-1. The Long class also contains methods like comparing Unsigned, divide Unsigned, etc to support arithmetic operations for unsigned long. 
 
 <br>
+``` bash
 example=>byte a = -20;
     byte b = -30;
     System.out.println(Byte.toUnsignedInt(a)); // 236
@@ -157,11 +160,10 @@ example=>byte a = -20;
     // this is what happened in this code
     // public static int divideUnsigned(int dividend, int divisor) {
     // return (int)(toUnsignedLong(dividend) / toUnsignedLong(divisor));
-    // }
+    // } ```
 
 
-
-# why size of char 2 is  bytes in java?
+# why size of char is 2 bytes in java?
 Java uses the Unicode system not the ASCII code System and to represent the Unicode system 8 bits is not enough to represent all characters so Java uses 2 bytes for characters.
 
 # Keywords:
@@ -183,6 +185,7 @@ In all other operator the associativity is from left to right.
 #  Concatenation:
  int x =3;
  int y =5;
+ <br>
  System.out.println("Concatenation (x+y)= " + x + y); // Concatenation of (x+y) = 35
 # Addition:
   System.out.println("Addition (x+y) = " + (x + y)); // Addition of (x+y) =  8
@@ -201,6 +204,7 @@ Variable is name given to memory given to memory location.
 # Loop Variables (Block Scope) 
 A variable declared inside pair of brackets “{” and “}” in a method has scope within the brackets only.
 <br>
+``` bash
 public class Test
 {
     public static void main(String args[])
@@ -218,9 +222,13 @@ public class Test
         // System.out.println(x); 
     }
 }
+```
+
 
 # Important Point from loop variable:
  The name of the variable of inner and outer loop must be different.
+
+``` bash
 class Test
 {
     public static void main(String args[])
@@ -234,9 +242,10 @@ class Test
         }
     }
 }
+```
 <br>
 // this code shows error because variable name of innner and outer loop is same.
-
+<br>
 Note : For a variable to be read after the termination of a loop, It must be declared before the body of the loop.
 
 
@@ -504,7 +513,7 @@ Error: OutOfMemoryError, StackOverflowError, VirtualMachineError.
 The primary purpose of the finalize method is to perform cleanup operations on resources that are not managed by the Java garbage collector. This includes resources like file handles, network connections, or database connections.
 
 example =>
-
+``` bash
 public class ResourceHolder {
     private FileOutputStream fileOutputStream;
 
@@ -524,7 +533,8 @@ public class ResourceHolder {
         }
     }
 }
-
+```
+<br>
 
 Note =>  In this example, the finalize method ensures that the FileOutputStream is closed before the object is garbage collected.
 
@@ -546,7 +556,7 @@ Common subclasses include FileOutputStream, ByteArrayOutputStream, BufferedOutpu
 
 
 Example =>
-
+``` bash
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -566,7 +576,7 @@ public class ByteStreamExample {
     }
 }
 
-
+```
 # Character Stream
 
 Character streams are used for handling I/O of character data. They read and write data in characters (16-bit Unicode). Character streams are suitable for handling text data.
@@ -583,6 +593,7 @@ Common subclasses include FileWriter, BufferedWriter, CharArrayWriter, StringWri
 
 
 Example => 
+``` bash
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -602,7 +613,7 @@ public class CharacterStreamExample {
     }
 }
 
-
+```
 
 # Efficiency of Byte Stream and Character Stream ;
 Byte Stream
@@ -652,7 +663,7 @@ Example: In the e-commerce application, the controller would manage actions like
 <br>
  frame.getContentPane().setBackground(Color.YELLOW);  
 
- getContentPane() => A container has several layers in it. We can think of a layer as a transparent film that overlays the container. In Java Swing, the layer that is used to hold objects is called the content pane. Objects are added to the content pane layer of the container. The getContentPane() method retrieves the content pane layer so that you can add an object or apply method to it. The content pane is an object created by the Java run time environment. 
+getContentPane() => A container has several layers in it. We can think of a layer as a transparent film that overlays the container. In Java Swing, the layer that is used to hold objects is called the content pane. Objects are added to the content pane layer of the container. The getContentPane() method retrieves the content pane layer so that you can add an object or apply method to it. The content pane is an object created by the Java run time environment. 
 **Remember that Content Pane is a layer of container.**
 
 <br>
