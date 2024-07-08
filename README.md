@@ -184,17 +184,18 @@ Example =>
 // A Java program to demonstrate that we can have
 // main() inside enum class.
 ```bash
-enum Color {
-	RED,
-	GREEN,
-	BLUE;
 
-	// Driver method
-	public static void main(String[] args)
-	{
-		Color c1 = Color.RED;
-		System.out.println(c1);
-	}
+enum Level {
+  LOW,
+  MEDIUM,
+  HIGH
+}
+
+public class Main { 
+  public static void main(String[] args) { 
+    Level myVar = Level.MEDIUM; 
+    System.out.println(myVar); 
+  } 
 }
 ```
 # Keywords:
