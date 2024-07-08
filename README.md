@@ -860,12 +860,88 @@ Example: In the e-commerce application, the controller would manage actions like
 
 
 # Swing
-**How to change the font of text in label**
+**Important point from JButton :**
+```bash
+// Event Listener : ActionListener 
+
+// Registration method : button.addActionListener(ActionListener a)
+
+// Override method :
+
+public void actionPerformed(ActionEvent e){
+if(e.getSource()== button){}
+}
+
+```
+
+**How to change the font of text in label (same in textfield and textarea)**
 
  label.setFont(new Font("Serif", Font.BOLD, 50));
+ 
+**Important Point from JPasswordField:**
+<br>
+password.getPassword() method returns array of char.
+
+**Important Point from JCheckBox :**
+
+```bash
+// Event Listener : ItemListener,ActionListener
+<br>
+// Registration method1 : checkbox.addItemListener(ItemListener a)
+// Registration method2 : checkbox.addActionListener(ActionListener a)
+
+//Override method1:
+
+public void itemStateChanged(ItemEvent e){
+if(e.getStateChange() == 1){}
+}
 
 
-**How to set the background color in swing**  
+//Override method2:
+public void actionPerformed(ActionEvent e){
+if(checkbox.isSelected(){}
+}
+```
+
+**Important Point from JRadioButton :**
+``` bash
+JRadioButton r1 = new JRadioButton("A");
+JRadioButton r2 = new JRadioButton("B");
+ButtonGroup bg = new JButtonGroup();
+bg.add(r1);
+bg.add(r2);
+frame.add(r1);
+frame.add(r2);
+```
+**For Message pop up:**
+JOptionPane.showMessageDialog(this,"Student Data Updated");
+
+**Important Point from JPasswordField:**
+<br>
+password.getPassword() method returns array of char.
+
+**Important Point from JComboBox :**
+
+```bash
+// Event Listener : ItemListener,ActionListener
+<br>
+// Registration method1 : combobox.addItemListener(ItemListener a)
+// Registration method2 : combobox.addActionListener(ActionListener a)  
+
+//Override method1:
+
+public void itemStateChanged(ItemEvent e){
+if(e.getItem() == ""){}
+}
+
+
+//Override method2:
+public void actionPerformed(ActionEvent e){
+if(combobox.getSelectedIndex()==1){}
+if(combobox.getSelectedItem()== "A"){}
+}
+```
+**How to set the background color in swing JFrame**  
 <br>
  frame.getContentPane().setBackground(Color.YELLOW);  
 
