@@ -515,7 +515,114 @@ if (!found){
 }
 
 ```
+# Strings :
 
+**CharSequence Interface :**
+<br>
+CharSequence Interface is used for representing the sequence of Characters in Java.
+<br>
+Classes that are implemented using the CharSequence interface are:
+<br>
+1.String
+<br>
+2.StringBuffer
+<br>
+3.StringBuilder
+<br>
+
+
+**String** is a sequence of characters.Strings are the type of objects that can store the character of values and in Java, every character is stored in 16 bits i.e using UTF 16-bit encoding. A string acts the same as an array of characters in Java.String is also thread safe.
+
+<br>
+
+**Important Point :** String class is marked as final so that nobody can overide the behavior of its method.
+<br>
+**Important Point from String :**
+<br>
+There are two ways to create String .
+<br>
+1.By creating String object. ex: String a = new String("hello"); 
+Note : when we create String by creating object then In such a case, JVM will create a new string object in normal (non-pool) heap memory.But it will not placed in String constant pool. To add it to String constant pool you have to "intern" it.
+```bash
+String demo = new String("Hello");
+demo.intern();
+```
+
+<br>
+2.By String Literals. ex: String b = "hello";
+<br>
+Note : when we create String by Literals then first JVM will find the literals in String constant pool.if a string literal is not found in the string pool, the JVM will create a new string object in the heap and add a reference to this object in the string pool.If the string literal already exists in the string pool, the JVM will not create a new object but instead will reference the existing string.
+
+<br> <br>
+Java uses concept of String constant pools to make Java more memory efficient. The string pool itself is part of the heap space but managed separately by the JVM to optimize memory usage and performance for string literals.
+
+**Important Point from String:**
+All the String method will create a new String because String is immutable.The original String remains unchanged.
+
+
+# StringBuffer:
+StringBuffer is a peer class of String, it is mutable in nature and it is thread safe class , we can use it when we have multi threaded environment and shared object of string buffer i.e, used by mutiple thread. As it is thread safe so there is extra overhead, so it is mainly used for multithreaded program.
+<br><br>
+
+Thread-Safe => Thread safety refers to the property of a piece of code or a program that ensures it functions correctly when multiple threads access it concurrently.
+
+
+# StringBuilder:
+StringBuilder in Java represents an alternative to String and StringBuffer Class, as it creates a mutable sequence of characters and it is not thread safe. It is used only within the thread , so there is no extra overhead , so it is mainly used for single threaded program.
+
+# StringTokenizer:
+StringTokenizer class in Java is used to break a string into tokens. A StringTokenizer object internally maintains a current position within the string to be tokenized. 
+
+```bash
+import java.util.StringTokenizer;
+
+public class Main {
+
+  public static void main(String[] args) {
+    StringTokenizer s = new StringTokenizer("sdf*j%fg#erk&asddfgsd");
+    // StringTokenizer s = new StringTokenizer(String str,delimeter);
+    while (s.hasMoreTokens()) {
+      System.out.println(s.nextToken("*,&,#,%"));        
+      
+
+// O/p=sdf
+j
+fg
+erk
+asddfgsd
+    }
+  }
+}
+
+
+```
+
+# StringJoiner: 
+StringJoiner is a class in java.util package which is used to construct a sequence of characters(strings) separated by a delimiter and optionally starting with a supplied prefix and ending with a supplied suffix.
+
+```bash
+import java.util.StringJoiner;
+
+public class StringJoinerExample {
+    public static void main(String[] args) {
+        // Create a StringJoiner with a delimiter, prefix, and suffix
+        StringJoiner joiner = new StringJoiner(", ", "[", "]");
+
+        // Add elements to the StringJoiner
+        joiner.add("apple");
+        joiner.add("banana");
+        joiner.add("cherry");
+
+        // Convert to a single string
+        String result = joiner.toString();
+        System.out.println(result);  // Output: [apple, banana, cherry]
+    }
+}
+```
+Note : It will throw NullPointerException if prefix is given as parameter in StringJoiner.
+<br>
+docs link for String : https://docs.oracle.com/javase/8/docs/api/java/lang/String.html
+<br>
 
 # Wrapper class
 A Wrapper class in Java is a class whose object wraps or contains primitive data types. When we create an object to a wrapper class, it contains a field and in this field, we can store primitive data types. 
