@@ -1289,6 +1289,10 @@ Example: In the e-commerce application, the controller would manage actions like
 
 
 # Swing
+
+**JButton :** The JButton class is used to create a labeled button that has platform independent implementation.
+<br>
+
 **Important point from JButton :**
 ```bash
 // Event Listener : ActionListener 
@@ -1306,12 +1310,37 @@ if(e.getSource()== button){}
 **How to change the font of text in label (same in textfield and textarea)**
 
  label.setFont(new Font("Serif", Font.BOLD, 50));
+ <br>
+ **Important Point From JTextField :**
+ 
+```bash
+// Event Listener : KeyListener
+<br>
+// Registration method1 : textbox1.addKeyListener(KeyListener a)
+
+//Override method1:
+
+public void keyPressed(KeyEvent e){
+}
+
+public void KeyTyped(KeyEvent e){
+}
+
+public void KeyReleased(KeyEvent e){
+}
+
+```
  
 **Important Point from JPasswordField:**
 <br>
 password.getPassword() method returns array of char.
 
+
+<br>
+
+**JCheckBox :** The JCheckBox class is used to create a checkbox. It is used to turn an option on (true) or off (false). It is used to check multiple checkbox.
 **Important Point from JCheckBox :**
+
 
 ```bash
 // Event Listener : ItemListener,ActionListener
@@ -1332,6 +1361,9 @@ if(checkbox.isSelected(){}
 }
 ```
 
+**JRadioButton:**
+The JRadioButton class is used to create a radio button. It is used to choose one option from multiple options.
+<br>
 **Important Point from JRadioButton :**
 ``` bash
 JRadioButton r1 = new JRadioButton("A");
@@ -1343,11 +1375,27 @@ frame.add(r1);
 frame.add(r2);
 ```
 **For Message pop up:**
+```bash
 JOptionPane.showMessageDialog(this,"Student Data Updated");
 
-**Important Point from JPasswordField:**
+JOptionPane.showMessageDialog(f,"Successfully Updated.","Alert",JOptionPane.WARNING_MESSAGE);  // **for alert**
+
+ String name=JOptionPane.showInputDialog(f,"Enter Name");   // **for taking input**
+ 
+ public void windowClosing(WindowEvent e) {  
+    int a=JOptionPane.showConfirmDialog(f,"Are you sure?");   // **for select an option**
+if(a==JOptionPane.YES_OPTION){  
+    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+}  
+}
+
+```
 <br>
-password.getPassword() method returns array of char.
+
+<br>
+
+**JComboBox :** The object of Choice class is used to show popup menu of choices. Choice selected by user is shown on the top of a menu.
+<br>
 
 **Important Point from JComboBox :**
 
@@ -1370,6 +1418,131 @@ if(combobox.getSelectedIndex()==1){}
 if(combobox.getSelectedItem()== "A"){}
 }
 ```
+
+
+**JTable :** The JTable class is used to display data in tabular form.It is composed of rows and columns.
+<br>
+```bash
+ final JTable jt=new JTable(data,column);
+
+// Some Basic properties of JTable
+
+jt.setCellSelectionEnabled(true);  
+ListSelectionModel select= jt.getSelectionModel();    // to select a value from table.
+select.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+// Event Listener : ListSelectionListener
+<br>
+// Registration method1 : combobox.addListSelectionListener(ListSelectionListener a)  
+
+//Override method1:
+
+public void valueChanged(ListSelectionEvent e){
+int [] row = jt.getSelectedRows();
+int [] columns = jt.getSelectedColumns();
+String Data = (String) jt.getValueAt(row[i], columns[j]);
+}
+
+
+
+// Other properties of JTable:
+
+ ResultSet resultSet = statement.executeQuery("select * from Fee_Details;"); // IN jdbc
+            ResultSetMetaData rsmd = resultSet.getMetaData();
+
+            // Create default table model
+            model = new DefaultTableModel() {
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false; // All cells are non-editable
+                }
+            };
+
+        
+            int columns = rsmd.getColumnCount();
+            final String[] colname = new String[columns];
+            for (int i = 0; i < columns; i++) {
+                colname[i] = rsmd.getColumnName(i + 1);
+            }
+
+            model.setColumnIdentifiers(colname);
+
+            while (resultSet.next()) {
+                final String[] row = new String[columns];
+                for (int i = 0; i < columns; i++) {
+                    row[i] = resultSet.getString(i + 1);
+                }
+                model.addRow(row);
+            }
+
+            tableData = new JTable(model);
+
+            int[] columnWidths = { 200, 200, 200, 500, 200, 200, 200 };
+
+            for (int i = 0; i < columns; i++) {
+                TableColumn column = tableData.getColumnModel().getColumn(i);
+                column.setPreferredWidth(columnWidths[i]);
+            }
+
+            tableData.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+            JScrollPane sp = new JScrollPane(tableData);
+            sp.setBounds(30, 150, 1200, 500);
+
+            sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+            sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+
+// FOR create a button to search data enter in textfield from table .
+ @Override
+    public void keyPressed(KeyEvent e) {
+        TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(model);
+        tableData.setRowSorter(obj);
+        obj.setRowFilter(RowFilter.regexFilter(text1.getText()));
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(model);
+        tableData.setRowSorter(obj);
+        obj.setRowFilter(RowFilter.regexFilter(text1.getText()));
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        TableRowSorter<DefaultTableModel> obj = new TableRowSorter<>(model);
+        tableData.setRowSorter(obj);
+        obj.setRowFilter(RowFilter.regexFilter(text1.getText()));
+    }
+
+
+```
+<br> <br>
+**JList :** The object of JList class represents a list of text items. The list of text items can be set up so that the user can choose either one item or multiple items. 
+<br>
+**Important Point from JList :**
+```bash
+// Event Listener : ListSelectionListener 
+<br>
+// Registration method1 : list1.addListSelectionListener(ListSelectionListener a)
+
+//Override method1:
+
+public void valueChanged(ListSelectionEvent e){
+if(list1.getSelectedValue()== "A"){}
+}
+// Default List Model
+
+DefaultListModel <String> l1 = new DefaultListModel <> ();
+JList <String> list = new JList <> ();
+// method to add element to list:
+l1.addElement("hello");
+
+// method to know which element is Selected:
+if(list.getSelectedIndex()== 0){}
+
+```
+
+
 **How to set the background color in swing JFrame**  
 <br>
  frame.getContentPane().setBackground(Color.YELLOW);  
@@ -1378,9 +1551,10 @@ getContentPane() => A container has several layers in it. We can think of a laye
 **Remember that Content Pane is a layer of container.**
 
 <br>
+
 **How to use SetBounds(x-axis , y- axis , width, height)**
 <br>
-Remember that in swinng or awt gui , the origin start from top left . 
+Remember that in swing or awt gui, the origin start from top left . 
 
 ![image](https://github.com/RupeshKumar4511/Java-Programming-code/assets/149661006/f4a9bffb-82d1-46c3-9184-9fdde918a525)
 
