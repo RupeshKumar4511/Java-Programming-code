@@ -660,8 +660,330 @@ Integer a =10 ;   // to convert object into string
 <br>
 String str = a.toString();
 
-# Arrays
-How to get max value from an array
+<br>
+
+# Arrays 
+Array is a collection of similar data elements stored at contiguous memory location.
+
+<br>
+Arrays are stored in a contiguous block of memory. This means that if the array has n elements, each element will be located right next to the other in memory. Arrays in Java are objects that are stored in the heap memory. This allows arrays to be dynamically allocated at runtime.
+<br>
+
+
+**Java Arrays member:**
+All the members are inherited from class Object; the only method of Object that is not inherited is its clone method.
+<br>
+The public method clone() overrides the clone method in class Object and throws no checked exceptions.
+
+
+#  clone() method:
+Object cloning refers to the creation of an exact copy of an object. It creates a new instance of the class of the current object and initializes all its fields with exactly the contents of the corresponding fields of this object.
+<br>
+There are 3 methods for creating Object Cloning in Java that are mentioned below:
+<br>
+1.Using Assignment Operator to create a copy of the reference variable:
+```bash
+// Java program to demonstrate that assignment operator 
+// only creates a new reference to same object 
+import java.io.*; 
+
+// A test class whose objects are cloned 
+class Test { 
+	int x, y; 
+	Test() 
+	{ 
+		x = 10; 
+		y = 20; 
+	} 
+} 
+
+// Driver Class 
+class Main { 
+	public static void main(String[] args) 
+	{ 
+		Test ob1 = new Test(); 
+
+		System.out.println(ob1.x + " " + ob1.y); 
+
+		// Creating a new reference variable ob2 
+		// pointing to same address as ob1 
+		Test ob2 = ob1; 
+
+		// Any change made in ob2 will 
+		// be reflected in ob1 
+		ob2.x = 100; 
+
+		System.out.println(ob1.x + " " + ob1.y); 
+		System.out.println(ob2.x + " " + ob2.y); 
+//O/P : 
+//10 20
+//100 20
+//100 20
+
+	} 
+}
+```
+2.a copy using the clone() method:
+```bash
+// A Java program to demonstrate 
+// shallow copy using clone() 
+import java.util.ArrayList; 
+
+// An object reference of this class is 
+// contained by Test2 
+class Test { 
+	int x, y; 
+} 
+
+// Contains a reference of Test and 
+// implements clone with shallow copy. 
+class Test2 implements Cloneable { 
+	int a; 
+	int b; 
+	Test c = new Test(); 
+	public Object clone() throws CloneNotSupportedException 
+	{ 
+		return super.clone(); 
+	} 
+} 
+
+// Driver class 
+public class Main { 
+	public static void main(String args[]) 
+		throws CloneNotSupportedException 
+	{ 
+		Test2 t1 = new Test2(); 
+		t1.a = 10; 
+		t1.b = 20; 
+		t1.c.x = 30; 
+		t1.c.y = 40; 
+
+		Test2 t2 = (Test2)t1.clone(); 
+
+		// Creating a copy of object t1 
+		// and passing it to t2 
+		t2.a = 100; 
+
+		// Change in primitive type of t2 will 
+		// not be reflected in t1 field 
+		t2.c.x = 300; 
+
+		// Change in object type field will be 
+		// reflected in both t2 and t1(shallow copy) 
+		System.out.println(t1.a + " " + t1.b + " " + t1.c.x 
+						+ " " + t1.c.y); 
+		System.out.println(t2.a + " " + t2.b + " " + t2.c.x 
+						+ " " + t2.c.y); 
+
+// O/P:
+10 20 300 40
+100 20 300 40
+	} 
+}
+```
+
+3.Usage of clone() method – Deep Copy:
+```bash
+// A Java program to demonstrate 
+// deep copy using clone() 
+
+// An object reference of this 
+// class is contained by Test2 
+class Test { 
+	int x, y; 
+} 
+
+// Contains a reference of Test and 
+// implements clone with deep copy. 
+class Test2 implements Cloneable { 
+	int a, b; 
+
+	Test c = new Test(); 
+
+	public Object clone() throws CloneNotSupportedException 
+	{ 
+		// Assign the shallow copy to 
+		// new reference variable t 
+		Test2 t = (Test2)super.clone(); 
+
+		// Creating a deep copy for c 
+		t.c = new Test(); 
+		t.c.x = c.x; 
+		t.c.y = c.y; 
+
+		// Create a new object for the field c 
+		// and assign it to shallow copy obtained, 
+		// to make it a deep copy 
+		return t; 
+	} 
+} 
+
+public class Main { 
+	public static void main(String args[]) 
+		throws CloneNotSupportedException 
+	{ 
+		Test2 t1 = new Test2(); 
+		t1.a = 10; 
+		t1.b = 20; 
+		t1.c.x = 30; 
+		t1.c.y = 40; 
+
+		Test2 t3 = (Test2)t1.clone(); 
+		t3.a = 100; 
+
+		// Change in primitive type of t2 will 
+		// not be reflected in t1 field 
+		t3.c.x = 300; 
+
+		// Change in object type field of t2 will 
+		// not be reflected in t1(deep copy) 
+		System.out.println(t1.a + " " + t1.b + " " + t1.c.x 
+						+ " " + t1.c.y);       //10 20 30 40
+		System.out.println(t3.a + " " + t3.b + " " + t3.c.x     
+						+ " " + t3.c.y);       //100 20 300 40
+
+	} 
+}
+```
+<br> <br>
+**Ararys class and its method:**
+The Arrays class in java.util package is a part of the Java Collection Framework. This class provides static methods to dynamically create and access Java arrays. It consists of only static methods and the methods of Object class. The methods of this class can be used by the class name itself.
+
+
+<br>
+# Important point from Arrays method:
+Difference between sort() an parallelSort() method:
+sort() method is single thread method that uses Dual Pivot Quicksort algorithm to sort the data.
+<br>
+parallelSort() method is multi-threaded method. It can sort large arrays faster by dividing the array into segments, sorting them in parallel using multiple threads, and then merging the sorted segments.
+
+# Jagged Arrays:
+There may be a certain scenario where you want every row to have a different number of columns. This type of array is called a Jagged Array.
+```bash
+import java.io.*; 
+
+class GFG { 
+	public static void main(String[] args) 
+	{ 
+		// declaring a 2D array with 2 rows 
+		int jagged[][] = new int[2][]; 
+
+		// not specifying the 2nd dimension, 
+		// and making it as jagged array 
+		// first row has 2 columns 
+		jagged[0] = new int[2]; 
+		// second row has 4 columns 
+		jagged[1] = new int[4]; 
+		// Initializing the array 
+		int count = 0; 
+		for (int i = 0; i < jagged.length; i++) { 
+			// remember to use jagged[i].length instead of 
+			// jagged[0].length, since every row has 
+			// different number of columns 
+			for (int j = 0; j < jagged[i].length; j++) { 
+				jagged[i][j] = count++; 
+			} 
+		} 
+
+		// printing the values of 2D Jagged array 
+		System.out.println("The values of 2D jagged array"); 
+		for (int i = 0; i < jagged.length; i++) { 
+			for (int j = 0; j < jagged[i].length; j++) 
+				System.out.printf(jagged[i][j] + " "); 
+			System.out.println(); 
+
+//O/P:
+//0 1 
+//2 3 4 5 
+
+		} 
+	} 
+}
+```
+
+
+**Final Ararys :**
+Note that with final we are bound not to refer to another object but within the object data can be changed which means we can change the state of the object but not reference.
+```bash
+// Java Program to Illustrate Final Arrays
+
+// Importing required classes
+import java.util.*;
+
+// Main class
+class GFG {
+
+	// Main driver method
+	public static void main(String args[])
+	{
+
+		// Declaring a final array
+		final int arr[] = { 1, 2, 3, 4, 5 };
+
+		// Iterating over integer array
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = arr[i] * 10;
+			System.out.println(arr[i]);
+//O/P:
+//10
+//20
+//30
+//40
+//50
+		}
+	}
+}
+```
+
+
+# Reflect Array class in java:
+The Array class in java.lang.reflect package is a part of the Java Reflection. This class provides static methods to create and access Java arrays dynamically. It is a final class, which means it can’t be instantiated or changed. Only the methods of this class can be used by the class name itself.
+whereas the java.util.Arrays class contains various methods for manipulating arrays (such as sorting and searching).
+```bash
+// Java code to retrieve an element from an integer array,
+// using the Array class:
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
+public class GfG {
+	public static void main(String[] args)
+	{
+
+		// Get the size of the array
+		int sizeOfArray = 3;
+
+		// Create an integer array
+		// using reflect.Array class
+		// This is done using the newInstance() method
+		int[] intArray = (int[])Array.newInstance(
+			int.class, sizeOfArray);
+
+		// Add elements to the array
+		// This is done using the setInt() method
+		Array.setInt(intArray, 0, 10);
+		Array.setInt(intArray, 1, 20);
+		Array.setInt(intArray, 2, 30);
+
+		// Printing the Array content
+		System.out.println(Arrays.toString(intArray));
+
+		// Retrieve elements from the array
+		// This is done using the getInt() method
+		System.out.println("Element at index 0: "
+						+ Array.getInt(intArray, 0));
+		System.out.println("Element at index 1: "
+						+ Array.getInt(intArray, 1));
+		System.out.println("Element at index 2: "
+						+ Array.getInt(intArray, 2));
+	}
+}
+```
+
+Note : we can also use reflect.Array class method in normal arrays.
+
+ 
+**How to get max value from an array**
 
 **int max = Arrays.stream(arr).max().getAsInt();**
 
