@@ -97,8 +97,10 @@ public static void main (String [] args){
 }
 <br>
 Next, theJVM runs everything between the curly braces { }of your main
-method. EveryJava application has to have at least one class. and at least
-one main method (**not one main per class;just one main per application**).
+method.
+<br>
+**EveryJava application has to have at least one class. and at least
+one main method (not one main per class;just one main per application**).
 
 
 # class and Object
@@ -116,7 +118,10 @@ Object is a collection of state(variables ) and behavior ( method)
 
 
  **Class** 
+ <br>
  A class is blue print of an  object.
+ <br>
+ 
 It tells virtual machine how to make an object of that type . Each object made from that class have its own value for the instance variable ov that class.
 
 
@@ -134,6 +139,7 @@ Java makes main method static so that JVM can call it without create an object f
 <br>
 
 String[] args : This is used to signify that the user may opt to enter parameters to the Java Program at command line.
+
 
 # Important Point from Data Type:
 Remember: In Java SE 8 and later, we can use the int data type to represent an unsigned 32-bit integer, which has a value in the range [0, 2 raise to power 32-1]. Use the Integer class to use the int data type as an unsigned integer. 
