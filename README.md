@@ -1365,6 +1365,9 @@ class A {
 ```
 <br>
 
+# Method Overloading :
+when two or more methods with same name but different parameters are defined in a class then it is called method overloading.
+
 # Important Point from method overloading :
 ```bash
 public class Test
@@ -1389,10 +1392,67 @@ public class Test
 	}
 }
 ```
+
+
 **Note :** method arguments Integer and String both are not primitive data types in Java. That means they accept null values. When we pass a null value to the method1 the compiler gets confused which method it has to select, as both are accepting the null. 
+
+<br>
+
+**Another Point from method overloading :**
+``` bash
+// Demo Class 
+class Demo { 
+	public void show(int x) 
+	{ 
+		System.out.println("In int" + x); 
+	} 
+	public void show(String s) 
+	{ 
+		System.out.println("In String" + s); 
+	} 
+	public void show(byte b) 
+	{ 
+		System.out.println("In byte" + b); 
+	} 
+} 
+
+class UseDemo { 
+	public static void main(String[] args) 
+	{ 
+		byte a = 25; 
+		Demo obj = new Demo(); 
+
+		// it will go to 
+		// byte argument 
+		obj.show(a); 
+
+		// String 
+		obj.show("hello"); 
+
+		// Int 
+		obj.show(250); 
+
+		// Since char is 
+		// not available, so the datatype 
+		// higher than char in terms of 
+		// range is int. 
+		obj.show('A'); 
+
+		// String 
+		obj.show("A"); 
+
+		// since float datatype 
+		// is not available and so it's higher 
+		// datatype, so at this step their 
+		// will be an error. 
+		obj.show(7.5); 
+	} 
+}
+```
 <br>
 <br>
-**Another Example of overloading using overriding :**
+
+**Example of overloading using overriding :**
 ```bash
 class App {
 
@@ -1414,6 +1474,9 @@ public class Test extends App {
 	}
 }
 ```
+# Method Overriding :
+when subclass defines methods that are already defined in super class then this process is called  method overriding.
+
 # Important Point from Method Overriding: 
 1.The access modifier for an overriding method can allow more, but not less, access than the overridden method. For example, a protected instance method in the superclass can be made public, but not private, in the subclass. 
 <br>
@@ -1480,6 +1543,158 @@ class Main {
 }
 ```
 
+3.The overriding method must have the same return type (or subtype) :
+<br>
+From Java 5.0 onwards it is possible to have different return types for an overriding method in the child class, but the child’s return type should be a sub-type of the parent’s return type. This phenomenon is known as the covariant return type.
+<br>
+```bash
+class Base {
+	Base fun() {
+	   System.out.println("Base fun");    
+	   return new Base() ;
+	}
+  }
+	
+  class Derived extends Base {
+	Derived fun() {
+	   System.out.println("Derived fun"); 
+	   return new Derived();    
+	}
+	public static void main(String[] args) {
+		Base obj = new Derived();
+		obj.fun();    // Derived fun
+	}  
+  }
+```
+
+<br>
+4.If the super-class overridden method does not throw an exception, the subclass overriding method can only throw the unchecked exception, throwing a checked exception will lead to a compile-time error.
+```bash
+// Java program to demonstrate overriding when
+// superclass method does not declare an exception
+
+class Parent {
+	void m1() { System.out.println("From parent m1()"); }
+
+	void m2() { System.out.println("From parent m2()"); }
+}
+
+class Child extends Parent {
+	@Override
+	// no issue while throwing unchecked exception
+	void m1() throws ArithmeticException
+	{
+		System.out.println("From child m1()");
+	}
+
+	@Override
+	// compile-time error
+	// issue while throwing checked exception
+	void m2() throws Exception
+	{
+		System.out.println("From child m2");
+	}
+}
+```
+<br> <br>
+
+5. If the superclass overridden method does throw an exception, the subclass overriding method can only throw the same, subclass exception. Throwing parent exceptions in the Exception hierarchy will lead to compile time error. Also, there is no issue if the subclass overridden method is not throwing any exception. 
+ 
+```bash
+// Java program to demonstrate overriding when
+// superclass method does declare an exception
+
+class Parent {
+	void m1() throws RuntimeException
+	{
+		System.out.println("From parent m1()");
+	}
+}
+
+class Child1 extends Parent {
+	@Override
+	// no issue while throwing same exception
+	void m1() throws RuntimeException
+	{
+		System.out.println("From child1 m1()");
+	}
+}
+class Child2 extends Parent {
+	@Override
+	// no issue while throwing subclass exception
+	void m1() throws ArithmeticException
+	{
+		System.out.println("From child2 m1()");
+	}
+}
+class Child3 extends Parent {
+	@Override
+	// no issue while not throwing any exception
+	void m1()
+	{
+		System.out.println("From child3 m1()");
+	}
+}
+class Child4 extends Parent {
+	@Override
+	// compile-time error
+	// issue while throwing parent exception
+	void m1() throws Exception
+	{
+		System.out.println("From child4 m1()");
+	}
+}
+```
+
+# When to use Method Oveerriding :
+Example:
+<br>
+```bash
+// Java program to demonstrate application
+// of overriding in Java
+
+// Base Class
+class Employee {
+	public static int base = 10000;
+	int salary() { return base; }
+}
+
+// Inherited class
+class Manager extends Employee {
+	// This method overrides salary() of Parent
+	int salary() { return base + 20000; }
+}
+
+// Inherited class
+class Clerk extends Employee {
+	// This method overrides salary() of Parent
+	int salary() { return base + 10000; }
+}
+
+// Driver class
+class Main {
+	// This method can be used to print the salary of
+	// any type of employee using base class reference
+	static void printSalary(Employee e)
+	{
+		System.out.println(e.salary());
+	}
+
+	public static void main(String[] args)
+	{
+		Employee obj1 = new Manager();
+
+		// We could also get type of employee using
+		// one more overridden method.loke getType()
+		System.out.print("Manager's salary : ");
+		printSalary(obj1);
+
+		Employee obj2 = new Clerk();
+		System.out.print("Clerk's salary : ");
+		printSalary(obj2);
+	}
+}
+```
 # concepts of stack memory and heap memory
 In Java, memory management is a critical aspect of the language's runtime environment.
  Both stack and heap are areas of memory where data can be stored during program execution, but they serve different purposes and have different characteristics.
