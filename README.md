@@ -241,7 +241,7 @@ Variable is name given to memory given to memory location.
 
 <br>
 <br>
-3. static variable can be overrided inside another static or non static method.But static variable get memory only once.
+3. Value of static variable can be changed inside another static or non static method in a class .But static variable get memory only once.
 <br>
 <br>
 4.Static variables and their values (both primitives and references) are stored in the Metaspace.
