@@ -235,11 +235,48 @@ Variable is name given to memory given to memory location.
 1.If we access a static variable like an instance variable (through an object), the compiler will show a warning message, which won’t halt the program. The compiler will replace the object name with the class name automatically.
 <br>
 
+<br>
+
 2.If we access a static variable without the class name, the compiler will automatically append the class name. But for accessing the static variable of a different class, we must mention the class name as 2 different classes might have a static variable with the same name.
 
 <br>
+<br>
+3. static variable can be overrided inside another static or non static method.But static variable get memory only once.
+<br>
+<br>
+4.Static variables and their values (both primitives and references) are stored in the Metaspace.
 
-# Loop Variables (Block Scope) 
+
+# Important point about instance variable:
+Instance variables are stored in the heap memory as part of the objects they belong to.
+
+# Instance method :
+Instance methods are methods that require an object of its class to be created before it can be called.
+<br>
+<br>
+**Important Point  :**  Instance methods are stored in metaspace.
+
+# Static method :
+Static methods are the methods in Java that can be called without creating an object of class.
+<br>
+<br>
+Static methods are stored in Metaspace .
+# Important point about abstract variable:
+ The following are various illegal combinations of other modifiers for methods with respect to abstract modifiers:
+ <br>
+final abstract
+<br>
+abstract native
+<br>
+abstract synchronized
+<br>
+abstract static
+<br>
+abstract private
+<br>
+abstract strictfp
+<br>
+# Loop Variables (Block Scope) :
 A variable declared inside pair of brackets “{” and “}” in a method has scope within the brackets only.
 <br>
 ``` bash
@@ -287,9 +324,6 @@ class Test
 Note : For a variable to be read after the termination of a loop, It must be declared before the body of the loop.
 
 
-
-# Important Point from Static variable :
-static variable can be overrided inside another static or non static method.But static variable get memory only once.
 
 # Methods to Take Input in Java
 There are two ways by which we can take Java input from the user or from a file
@@ -992,62 +1026,511 @@ Note : we can also use reflect.Array class method in normal arrays.
 **How to get max value from an array**
 
 **int max = Arrays.stream(arr).max().getAsInt();**
-
-Here 
-Arrays.stream(arr):
+<br>
+<br>
+**Arrays.stream(arr):**
 
 Converts the array arr into an IntStream, which is a sequence of primitive int values.
-
-.max():
-
+<br>
+**.max():**
 Finds the maximum value in the stream. It returns an OptionalInt because the stream might be empty, in which case there wouldn't be a maximum value.
-
-.getAsInt():
+<br>
+**.getAsInt():**
 
 Retrieves the value from the OptionalInt. Since we're assuming the array is not empty, this operation is safe. However, if there's a possibility that the array could be empty, it's better to handle the empty case explicitly to avoid NoSuchElementException.
 
+# Throwable class :
+The Throwable class is the superclass of every error and exception in the Java language. Only objects that are one of the subclasses this class are thrown by any “Java Virtual Machine” or may be thrown by the Java throw statement.
+
+# OOPS
+**When to use Abstract class ?**
+<br>
+Sometimes we want to create a superclass that only defines a generalization form that will be shared by all of its subclasses, leaving it to each subclass to fill in the details.
+
+<br>
+# Why abstract class is faster than interface?
+<br>
+An abstract class is faster than an interface because the interface involves a search before calling any overridden method in Java whereas abstract class can be directly used. 
+
+<br>
+# How to use Inner Abstract class :
+<br>
+We can use the abstract keyword for declaring top-level classes (Outer class) as well as inner classes as abstract.
+<br>
+
+```bash
+import java.io.*;
+
+abstract class B {
+	// declaring inner class as abstract with abstract
+	// method
+	abstract class C {
+		abstract void myAbstractMethod();
+	}
+}
+class D extends B {
+	class E extends C {
+		// implementing the abstract method
+		void myAbstractMethod()
+		{
+			System.out.println(
+				"Inside abstract method implementation");
+		}
+	}
+}
+
+public class Main {
+
+	public static void main(String args[])
+	{
+		// Instantiating the outer class
+		D outer = new D();
+
+		// Instantiating the inner class
+		D.E inner = outer.new E();
+		inner.myAbstractMethod();  // Inside abstract method implementation
+	}
+}
+```
 
 
+# Important Point from Encapsulation :
+
+Encapsulation can be achieved by declaring all the variables in a class as private and writing public methods in the class to set and get the values of the variables.
+
+# Important Points about method overriding and static methods:
+
+For class (or static) methods, the method according to the type of reference is called, not according to the object being referred, which means method call is decided at compile time.
+<br>
+For instance (or non-static) methods, the method is called according to the type of object being referred, not according to the type of reference, which means method calls is decided at run time.
+<br>
+An instance method cannot override a static method, and a static method cannot hide an instance method. 
+<br>
+In a subclass (or Derived Class), we can overload the methods inherited from the superclass. Such overloaded methods neither hide nor override the superclass methods — they are new methods, unique to the subclass.
+
+# Class as return type of method (example of Polymorphism) :
+```bash
+import java.util.Random;
+
+class DeliveryBoy {
+
+    public void deliver() {
+        System.out.println("Delivering Item");
+    }
+
+    public static void main(String[] args) {
+        DeliveryBoy deliveryBoy = getDeliveryBoy();
+        deliveryBoy.deliver();
+    }
+
+    private static DeliveryBoy getDeliveryBoy() {
+        Random random = new Random();
+        int number = random.nextInt(5);
+        return number % 2 == 0 ? new Postman() : new FoodDeliveryBoy();
+    }
+}
+
+class Postman extends DeliveryBoy {
+    @Override
+    public void deliver() {
+        System.out.println("Delivering Letters");
+    }
+}
+
+class FoodDeliveryBoy extends DeliveryBoy {
+    @Override
+    public void deliver() {
+        System.out.println("Delivering Food");
+    }
+}
+```
+
+
+
+
+# How many Types of interfaces in Java?
+<br>
+Types of interfaces in Java are mentioned below:
+<br>
+1.Functional Interface : 
+<br>
+A functional interface is an interface that contains only one abstract method.
+<br>
+2.Marker interface:
+<br>
+Tagged or marker Interfaces are interfaces without any methods they serve as a marker without any capabilities.
+<br>
+
+
+# Use of Private method in java:
+```bash
+interface Practice {
+	public abstract void show();
+	public default void display() {
+	  System.out.println("default method");
+	  show1();
+	}
+  
+	private void show1() // it may be static or non static
+	{
+	  System.out.println("Private method");
+	}
+  }
+  
+  class test implements Practice {
+	public void show() {
+	  System.out.println("This is implemented abstract method");
+	}
+  
+	public void display() {
+	  System.out.println("this is overided default method1 ");
+	}
+  
+	public static void main(String args[]) {
+	  Practice a = new test();
+	  a.show();   // This is implemented abstract method
+	
+	  a.display();  // this is overided default method1 
+	}
+  }
+```
+<br>
+
+# we can intialize the object's variables in the method also.
+```bash
+// Java Program to demonstrate 
+// Java Inheritance
+
+// Parent Class
+class Person1 {
+	// Variables
+	int id;
+	String name;
+
+	// Java Methods
+	void set_Person(int id, String name)
+	{
+		try {
+			this.id = id;
+			this.name = name;
+		}
+		catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+	void disp_Person()
+	{
+		System.out.print(id + "\t" + name + "\t");
+	}
+}
+
+// Child Class
+class Employee1 extends Person1 {
+	int sal;
+	String desgn;
+	void set_Emp(int id, String name, String desgn, int sal)
+	{
+		try {
+			set_Person(id, name);
+			this.desgn = desgn;
+			this.sal = sal;
+		}
+		catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+	void disp_Emp()
+	{
+		disp_Person();
+		System.out.print(desgn + "\t" + sal);
+	}
+
+	// Main function
+	public static void main(String args[])
+	{
+
+		Employee1 e1 = new Employee1();
+		e1.set_Emp(1001, "Manjeet", "AP", 20000);
+		e1.disp_Emp();   // 1001  Manjeet  AP  20000
+	}
+}
+```
+
+# Important Point from Interface :
+```bash
+interface Practice {
+	public abstract void show();
+	
+  }
+interface GFG {
+
+   void show();
+}
+public class Test implements Practice , GFG {
+	public void show() {
+	  System.out.println("This is implemented abstract method");
+	}
+    
+  
+	public static void main(String args[]) {
+	  Test  a = new Test();
+	  a.show();
+
+
+//OP : This is implemented abstract method
+	}
+  }
+```
+<br>
+Note : Since both Practice and GFG declare a method with the same signature (void show()), the show() method in the Test class provides a single implementation that satisfies the requirements of both interfaces. Therefore, the show() method in Test overrides the show() method declared in both Practice and GFG.
+
+# How diamond Problem is solved in java(Example of Hybrid Inheritance) :
+
+```bash
+// Java program to demonstrate How Diamond Problem
+// Is Handled in case of Default Methods
+
+// Interface 1
+interface GPI {
+
+	// Default method
+	default void show()
+	{
+
+		// Print statement
+		System.out.println("Default GPI");
+	}
+}
+
+// Interface 2
+// Extending the above interface
+interface PI1 extends GPI {
+}
+
+// Interface 3
+// Extending the above interface
+interface PI2 extends GPI {
+}
+
+// Main class
+// Implementation class code
+class TestClass implements PI1, PI2 {
+
+	// Main driver method
+	public static void main(String args[])
+	{
+
+		// Creating object of this class
+		// in main() method
+		TestClass d = new TestClass();
+
+		// Now calling the function defined in interface 1
+		// from whom Interface 2and 3 are deriving
+		d.show();
+
+// O/P : Default GPI
+	}
+}
+```
+# Nested Interface :
+We can declare interfaces as members of a class or another interface. Such an interface is called a member interface or nested interface. Interface in a class Interfaces (or classes) can have only public and default access specifiers when declared outside any other class.This interface declared in a class can either be default, public, protected not private.
+<br>
+Example :
+<br>
+```bash
+class Test {
+	interface Yes {
+		void show();
+	}
+}
+
+class Testing implements Test.Yes {
+	public void show()
+	{
+		System.out.println("show method of interface");
+	}
+}
+
+class A {
+	public static void main(String[] args)
+	{
+		Test.Yes obj;
+		Testing t = new Testing();
+                t.show();   // show method of interface
+		obj = t;
+		obj.show();  // show method of interface
+                
+	}
+}
+```
+<br>
+
+# Important Point from method overloading :
+```bash
+public class Test
+{
+	// Overloaded methods
+	public void fun(Integer i)
+	{
+		System.out.println("fun(Integer ) ");
+	}
+	public void fun(String name)
+	{
+		System.out.println("fun(String ) ");
+	}
+
+	// Driver code 
+	public static void main(String [] args)
+	{
+		Test mv = new Test();
+
+		// This line causes error
+		mv.fun(null);
+	}
+}
+```
+**Note :** method arguments Integer and String both are not primitive data types in Java. That means they accept null values. When we pass a null value to the method1 the compiler gets confused which method it has to select, as both are accepting the null. 
+<br>
+<br>
+**Another Example of overloading using overriding :**
+```bash
+class App {
+
+	void display(int a , int b ) {
+		int sum = a + b;
+        System.out.println(sum);	}
+}
+
+public class Test extends App {
+	void display(int a , int b , int c ) {
+		int sum = a + b + c ;
+		System.out.println(sum);
+	}
+
+	public static void main(String args[] ) {
+		Test a  = new Test();
+		a.display(2,8 ); //10
+		a.display(2,3,4);// 9
+	}
+}
+```
+# Important Point from Method Overriding: 
+1.The access modifier for an overriding method can allow more, but not less, access than the overridden method. For example, a protected instance method in the superclass can be made public, but not private, in the subclass. 
+<br>
+2. when a static method of Super class is also defined in sub class as static  then it hides the statement written in subclass.
+<br>
+```bash
+// Java program to show that
+// if the static method is redefined by
+// a derived class, then it is not
+// overriding, it is hiding
+
+class Parent {
+	// Static method in base class
+	// which will be hidden in subclass
+	static void m1()
+	{
+		System.out.println("From parent "
+						+ "static m1()");
+	}
+
+	// Non-static method which will
+	// be overridden in derived class
+	void m2()
+	{
+		System.out.println(
+			"From parent "
+			+ "non - static(instance) m2() ");
+	}
+}
+
+class Child extends Parent {
+	// This method hides m1() in Parent
+	static void m1()
+	{
+		System.out.println("From child static m1()");
+	}
+
+	// This method overrides m2() in Parent
+	@Override public void m2()
+	{
+		System.out.println(
+			"From child "
+			+ "non - static(instance) m2() ");
+	}
+}
+
+// Driver class
+class Main {
+	public static void main(String[] args)
+	{
+		Parent obj1 = new Child();
+
+		// As per overriding rules this
+		// should call to class Child static
+		// overridden method. Since static
+		// method can not be overridden, it
+		// calls Parent's m1()
+		obj1.m1();
+
+		// Here overriding works
+		// and Child's m2() is called
+		obj1.m2();
+	}
+}
+```
 
 # concepts of stack memory and heap memory
 In Java, memory management is a critical aspect of the language's runtime environment.
  Both stack and heap are areas of memory where data can be stored during program execution, but they serve different purposes and have different characteristics.
 
-1. Stack Memory:
-
-Purpose:
+**1. Stack Memory:**
+<br>
+**Purpose:**
 Stack memory is used for storing method execution frames and local variables.
-Characteristics:
+<br>
+**Characteristics:**
 Each thread in a Java application has its own stack.
 Memory allocation and deallocation on the stack follow a last-in, first-out (LIFO) principle.
 It has a fixed size determined at the startup of the Java Virtual Machine (JVM).
 Access to stack memory is faster than heap memory because of its simple allocation and deallocation mechanism.
-Usage:
+<br>
+**Usage:**
 
 Method calls and local variables are stored in stack memory.
 Variables created within a method, including primitive types and references to objects, are stored in stack memory.
 Stack memory is automatically managed by the JVM, and it's not directly accessible to Java programmers.
 
 
-2. Heap Memory:
-
-Purpose:
+**2. Heap Memory:**
+<br>
+**Purpose:**
 Heap memory is used for dynamic memory allocation. It's where objects, arrays, and their instance variables are allocated.
-Characteristics:
+<br>
+**Characteristics:**
 All Java objects reside in the heap.
 Memory allocation and deallocation on the heap are less predictable than on the stack and follow a more complex process.
 The size of the heap can dynamically increase or decrease during the execution of a Java program.
 Memory management in the heap is handled by the garbage collector, which identifies and removes objects that are no longer in use to free up memory.
-Usage:
+<br>
+**Usage:**
 Objects created using the new keyword are allocated in heap memory.
 Instance variables of objects are stored in heap memory.
 The heap is shared among all threads in a Java application.
-Comparison:
-Lifetime:
+
+<br>
+<br>
+
+**Comparison:**
+<br>
+<br>
+**Lifetime:**
 Stack memory is short-lived and exists only during the execution of a method, while heap memory persists for the duration of the program's execution or until the object is no longer referenced.
-Access:
+<br>
+**Access:**
 Access to stack memory is faster than access to heap memory due to its simple allocation and deallocation mechanism.
-Size:
+<br>
+**Size:**
 Stack memory size is fixed and usually smaller than the heap. It's determined at JVM startup.
 The heap can dynamically increase or decrease in size during program execution based on the memory requirements of the application and the available system resources.
 
