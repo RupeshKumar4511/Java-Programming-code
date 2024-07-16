@@ -1754,75 +1754,163 @@ The heap can dynamically increase or decrease in size during program execution b
 
 
 # Advantages of Packages; 
-
-1. Java Package is Used to Categorize the Classes and Interfaces for Easier Maintenance:
+**1.Java Package is Used to Categorize the Classes and Interfaces for Easier Maintenance:**
 In Java, packages serve as a way to group related classes, interfaces, enumerations, and annotations.
 By organizing code into packages, developers can manage and maintain large codebases more efficiently.
-
-2.Java Package Removes Naming Collision:
+<br>
+**2.Java Package Removes Naming Collision:**
 Naming collisions occur when two classes or interfaces have the same name.
 Packages help in avoiding these conflicts by providing a namespace for each class or interface. 
 
-3.Java Package Provides Access Protection:
+**3.Java Package Provides Access Protection:**
 Java packages also play a crucial role in defining the accessibility of classes and their members. This is achieved through access modifiers and package-level access control. 
 
+# Package 
+Package is a group of related classes,interfaces and subpackages.
+<br>
+Important Point : Packages can be considered as data encapsulation (or data-hiding).
+<br>
+# Subpackages:
+Packages that are inside another package are the subpackages. These are not imported by default, they have to imported explicitly. Also, members of a subpackage have no access privileges, i.e., they are considered as different package for protected and default access specifiers.
 
-# java System Packages:
+# Static Import of a Package : 
+Static import is a feature introduced in Java programming language ( versions 5 and above ) that allows members ( fields and methods ) defined in a class as public static to be used in Java code without specifying the class in which the field is defined.
+```bash
+// Note static keyword after import.
+import static java.lang.System.*;
+
+class StaticImportDemo {
+    public static void main(String args[])
+    {
+        // We don't need to use 'System.out'
+        // as imported using static.
+        out.println("GeeksforGeeks");
+    }
+}
+```
+
+# Java System Packages:
 
 Java system packages are a set of pre-defined packages provided by the Java Standard Library (also known as the Java API). These packages include classes and interfaces that are fundamental to the design and functioning of Java applications. They offer essential functionality, such as basic input and output operations, string manipulation, data structures, networking, graphical user interface (GUI) development, and more.
-
+<br>
 Here are some of the core Java system packages and their primary purposes:
-
-1. java.lang
+<br> <br>
+**1.java.lang**
+<br>
 This package is automatically imported into every Java program and contains fundamental classes and interfaces.
+<br>
+**Classes:** Object, Class, String,(wrapper classes) Integer,Double,Long,Short , Float,Byte,Boolean, Math, System, Thread, Exception, etc.
+<br>
+**Purpose:** Provides classes that are fundamental to the design of the Java programming language.
+<br>
+<br>
 
-Classes: Object, Class, String, Math, System, Thread, Exception, etc.
-Purpose: Provides classes that are fundamental to the design of the Java programming language.
-2. java.util
+**2. java.util**
+<br>
 This package contains the collections framework, legacy collection classes, event model, date and time facilities, and miscellaneous utility classes.
+<br>
+**Classes:** ArrayList,Arrays,LinkedList,Stack, HashMap, HashSet, Date, Calendar, Random, Scanner, etc.
+<br>
+**Purpose:** Provides utility classes and data structures like lists, maps, sets, and utilities for date and time manipulation.
+<br>
+<br>
 
-Classes: ArrayList, HashMap, HashSet, Date, Calendar, Random, Scanner, etc.
-Purpose: Provides utility classes and data structures like lists, maps, sets, and utilities for date and time manipulation.
-3. java.io
+**3.java.io**
+<br>
+
 This package provides for system input and output through data streams, serialization, and the file system.
+<br>
+**Classes:** File, FileInputStream, FileOutputStream, BufferedReader, BufferedWriter, PrintStream, etc.
+<br>
+**Purpose:** Handles input and output operations, including file I/O and stream-based I/O.
+<br>
+<br>
 
-Classes: File, FileInputStream, FileOutputStream, BufferedReader, BufferedWriter, PrintStream, etc.
-Purpose: Handles input and output operations, including file I/O and stream-based I/O.
-4. java.nio
+**4.java.ino**
+<br>
+
 This package provides classes for the new I/O (non-blocking I/O) facilities.
+<br>
 
-Classes: ByteBuffer, CharBuffer, FileChannel, Paths, Path, Files, etc.
-Purpose: Offers advanced I/O capabilities, including buffer management, file channels, and file operations.
-5. java.net
+**Classes:** ByteBuffer, CharBuffer, FileChannel, Paths, Path, Files, etc.
+<br>
+
+**Purpose:** Offers advanced I/O capabilities, including buffer management, file channels, and file operations.
+<br>
+<br>
+
+**5. java.net**
+<br>
 This package provides classes for implementing networking applications.
+<br>
 
-Classes: URL, URLConnection, Socket, ServerSocket, InetAddress, HttpURLConnection, etc.
-Purpose: Facilitates network operations, such as URL handling, socket programming, and networking utilities.
-6. java.awt
+**Classes:** URL, URLConnection, Socket, ServerSocket, InetAddress, HttpURLConnection, etc.<br>
+<br>
+
+
+**Purpose:** Facilitates network operations, such as URL handling, socket programming, and networking utilities.
+<br>
+<br>
+
+**6. java.awt**
+<br>
+
 This package contains classes for creating user interfaces and for painting graphics and images.
+<br>
 
-Classes: Button, Label, Canvas, Frame, Graphics, Color, Font, etc.
-Purpose: Provides the Abstract Window Toolkit (AWT) for creating GUI components and handling events.
-7. javax.swing
+**Classes:** Button, Label, Canvas, Frame, Graphics, Color, Font, etc.
+<br>
+
+**Purpose:** Provides the Abstract Window Toolkit (AWT) for creating GUI components and handling events.
+<br>
+<br>
+
+
+**7.javax.swing**
 This package provides a set of "lightweight" (all-Java language) components that work the same on all platforms.
+<br>
 
-Classes: JButton, JLabel, JPanel, JFrame, JTextField, etc.
-Purpose: Offers a rich set of GUI components that enhance and extend the AWT framework.
-8. java.sql
+**Classes:** JButton, JLabel, JPanel, JFrame, JTextField, etc.
+<br>
+
+**Purpose:** Offers a rich set of GUI components that enhance and extend the AWT framework.
+<br>
+<br>
+
+**8. java.sql**
+<br>
+
 This package provides the API for accessing and processing data stored in a data source (usually a relational database) using the Java programming language.
+<br>
 
-Classes: Connection, Statement, PreparedStatement, ResultSet, SQLException, etc.
-Purpose: Enables database connectivity and operations using JDBC (Java Database Connectivity).
-9. java.security
+**Classes:** Connection, Statement, PreparedStatement, ResultSet, SQLException, etc.
+<br>
+
+**Purpose:** Enables database connectivity and operations using JDBC (Java Database Connectivity).
+<br>
+
+**9. java.security**
+<br>
+
 This package provides the classes and interfaces for the security framework.
+<br>
 
-Classes: MessageDigest, KeyPair, Signature, SecureRandom, AccessController, etc.
-Purpose: Supports the development of security features, including cryptography, authentication, and access control.
-10. java.time
+**Classes:** MessageDigest, KeyPair, Signature, SecureRandom, AccessController, etc.
+<br>
+
+**Purpose:** Supports the development of security features, including cryptography, authentication, and access control.
+<br>
+
+**10. java.time**
+<br>
+
 This package provides the API for date and time operations.
+<br>
 
-Classes: LocalDate, LocalTime, LocalDateTime, ZonedDateTime, Duration, Period, etc.
-Purpose: Offers a comprehensive set of classes for date and time manipulation, introduced in Java 8 to replace the older java.util.Date and java.util.Calendar.
+**Classes:** LocalDate, LocalTime, LocalDateTime, ZonedDateTime, Duration, Period, etc.
+<br>
+
+**Purpose :**  Offers a comprehensive set of classes for date and time manipulation, introduced in Java 8 to replace the older java.util.Date and java.util.Calendar.
 
 # Virtual Memory Error
 Virtual memory error refers to problems related to the management and allocation of virtual memory by the operating system (OS). Virtual memory is a memory management technique that allows an operating system to compensate for physical memory shortages, temporarily transferring data from random access memory (RAM) to disk storage.
