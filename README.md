@@ -1754,9 +1754,25 @@ Stack memory size is fixed and usually smaller than the heap. It's determined at
 The heap can dynamically increase or decrease in size during program execution based on the memory requirements of the application and the available system resources.
 
 # Metaspace :
-Metaspace is 
+Metaspace is a part of JVM memory Structure and is used to store class metadata, such as class definitions, method information, and other class-related data.
 
-# Advantages of Packages; 
+# Method Area:
+It is a logical part of the heap area and is created on virtual machine startup.
+This memory is allocated for class structures, method data and constructor field data, and also for interfaces or special method used in class. Heap can be of fixed or dynamic size depending upon the system’s configuration.
+Can be of a fixed size or expanded as required by the computation. Needs not to be contiguous.
+<br>
+Note: Though method area is logically a part of heap, it may or may not be garbage collected even if garbage collection is compulsory in heap area.
+<br>
+Actually It is a part of Metaspace.
+
+# Native method Stacks:
+Also called as C stacks, native method stacks are not written in Java language. This memory is allocated for each thread when its created. And it can be of fixed or dynamic nature.
+
+# Program counter (PC) registers:
+Each JVM thread which carries out the task of a specific method has a program counter register associated with it. The non native method has a PC which stores the address of the available JVM instruction whereas in a native method, the value of program counter is undefined. PC register is capable of storing the return address or a native pointer on some specific platform.
+
+# Advantages of Packages 
+
 **1.Java Package is Used to Categorize the Classes and Interfaces for Easier Maintenance:**
 In Java, packages serve as a way to group related classes, interfaces, enumerations, and annotations.
 By organizing code into packages, developers can manage and maintain large codebases more efficiently.
@@ -1915,12 +1931,18 @@ This package provides the API for date and time operations.
 
 **Purpose :**  Offers a comprehensive set of classes for date and time manipulation, introduced in Java 8 to replace the older java.util.Date and java.util.Calendar.
 
-# Virtual Memory Error
+# Virtual Memory Error:
+
 Virtual memory error refers to problems related to the management and allocation of virtual memory by the operating system (OS). Virtual memory is a memory management technique that allows an operating system to compensate for physical memory shortages, temporarily transferring data from random access memory (RAM) to disk storage.
 
 Insufficient Virtual Memory: When the combined total of RAM and allocated virtual memory (page file) is insufficient to handle the current demands of running applications, the OS may produce a virtual memory error.
 
-# OutOfMemoryError
+# OutOfMemoryError :
+It occurs due to memory leak.
+<br>
+**Memory Leaks :**There might be situations where an application creates lots of objects and does not use them. Just because every objects has valid references, garbage collector in Java can’t destroys the objects. Such types of useless objects are called as Memory leaks.
+<br>
+<br>
 OutOfMemoryError in Java is a runtime error thrown by the Java Virtual Machine (JVM) when it cannot allocate an object because it is out of heap memory. This error indicates that the garbage collector has failed to free up enough memory for a new object. 
 
 
