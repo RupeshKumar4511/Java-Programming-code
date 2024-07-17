@@ -1701,11 +1701,12 @@ class Main {
 # concepts of stack memory and heap memory
 In Java, memory management is a critical aspect of the language's runtime environment.
  Both stack and heap are areas of memory where data can be stored during program execution, but they serve different purposes and have different characteristics.
+<br>
 
 **1. Stack Memory:**
 <br>
 **Purpose:**
-Stack memory is used for storing method execution frames and local variables.
+Stack memory is used for storing method execution frames and local variables and references.
 <br>
 **Characteristics:**
 Each thread in a Java application has its own stack.
@@ -1723,7 +1724,7 @@ Stack memory is automatically managed by the JVM, and it's not directly accessib
 **2. Heap Memory:**
 <br>
 **Purpose:**
-Heap memory is used for dynamic memory allocation. It's where objects, arrays, and their instance variables are allocated.
+Heap memory is used for dynamic memory allocation. It's where objects, arrays, and instance variables are allocated.
 <br>
 **Characteristics:**
 All Java objects reside in the heap.
@@ -1752,6 +1753,8 @@ Access to stack memory is faster than access to heap memory due to its simple al
 Stack memory size is fixed and usually smaller than the heap. It's determined at JVM startup.
 The heap can dynamically increase or decrease in size during program execution based on the memory requirements of the application and the available system resources.
 
+# Metaspace :
+Metaspace is 
 
 # Advantages of Packages; 
 **1.Java Package is Used to Categorize the Classes and Interfaces for Easier Maintenance:**
