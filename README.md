@@ -2373,8 +2373,10 @@ A JscrollPane is used to make scrollable view of a component. When screen size i
 
 
 <br>
+
 We can use JScrollPane in textarea and table .
 <br>
+
 ```bash
 JScrollPane scrollableTextArea = new JScrollPane(textArea);
 
@@ -2385,6 +2387,18 @@ table.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 table.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
 ```
 
+# JPanel 
+The JPanel is a simplest container class. It provides space in which an application can attach any other component.
+<br>
+we can add JPanel to JFrame and can set its background color.
+<br>
+```bash
+JFrame frame = new JFrame();
+JPanel panel = new JPanel();
+panel.setBackground(Color.yellow);
+frame.add(panel);
+```
+# JFrame :
 
 **How to set the background color in swing JFrame**  
 <br>
