@@ -1931,6 +1931,96 @@ This package provides the API for date and time operations.
 
 **Purpose :**  Offers a comprehensive set of classes for date and time manipulation, introduced in Java 8 to replace the older java.util.Date and java.util.Calendar.
 
+
+# Thread : 
+
+**There are two ways to create thread :**
+1. Extending the Thread class
+<br>
+```bash
+class MultithreadingDemo extends Thread {
+	public void run() {
+		try {
+			// Displaying the thread that is running
+			for (int i = 0; i < 100; i++) {
+				System.out.println("hi");
+			}
+		} catch (Exception e) {
+
+		}
+	}
+}
+
+class ThreadTest2 extends Thread {
+	public void run() {
+		try {
+			for (int i = 0; i < 100; i++) {
+				System.out.println("hello");
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+}
+
+// Main Class
+public class Test {
+	public static void main(String[] args) {
+		MultithreadingDemo a = new MultithreadingDemo();
+		ThreadTest2 b = new ThreadTest2();
+		a.start();
+		b.start();
+	}
+
+}
+
+```
+<br>
+2. Implementing the Runnable Interface
+```bash
+class ThreadTest3 implements Runnable {
+
+	@Override
+	public void run() {
+		for (int i = 0; i < 100; i++) {
+			System.out.println("hello java World");
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+
+				e.printStackTrace();
+			}
+		}
+	}
+
+}
+
+class ThreadTest4 implements Runnable {
+
+	@Override
+	public void run() {
+		for (int i = 0; i < 100; i++) {
+			System.out.println("java World");
+		}
+	}
+
+}
+
+public class Test {
+
+	public static void main(String[] args) {
+		ThreadTest3 a = new ThreadTest3();
+		ThreadTest4 b = new ThreadTest4();
+
+		Runnable c = new Thread(a);
+        Thread.currentThread().getPriority();
+		Runnable d = new Thread(b);
+		c.run();
+
+		d.run();
+	}
+}
+```
 # Virtual Memory Error:
 
 Virtual memory error refers to problems related to the management and allocation of virtual memory by the operating system (OS). Virtual memory is a memory management technique that allows an operating system to compensate for physical memory shortages, temporarily transferring data from random access memory (RAM) to disk storage.
