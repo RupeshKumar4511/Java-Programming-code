@@ -1976,6 +1976,7 @@ public class Test {
 
 ```
 <br>
+
 2. Implementing the Runnable Interface
 ```bash
 class ThreadTest3 implements Runnable {
@@ -2021,6 +2022,120 @@ public class Test {
 	}
 }
 ```
+
+
+# Exception Handling 
+It is the mechanism to handle the run time exception so that normal flow of program can be maintained.
+
+<br>
+<br>
+# Exception : Exceptions are unexpected events that disrupts the normal flow of program.
+
+<br>
+<br>
+
+# Errors : Errors are serious problem that can not be handled by using try-catch statement.
+<br>
+<br>
+
+# Types of Built-in Exception In Java:
+<br>
+
+**1.Checked Exception :** These are the exception that which are checked at compile time.
+<br>
+
+**2.Unchecked Exception :** These are the exception that which are checked at run time.
+ 
+<br>
+
+**# User Defined Exception :**
+Sometimes, the built-in exceptions in Java are not able to describe a certain situation. In such cases, the user can also create exceptions which are called ‘user-defined Exceptions’. 
+
+# How does JVM handle Exception :
+
+There might be a list of the methods that had been called to get to the method where an exception occurred. This ordered list of methods is called Call Stack.
+<br>
+The run-time system starts searching from the method in which the exception occurred and proceeds through the call stack in the reverse order in which methods were called.
+<br>
+If it finds an appropriate handler, then it passes the occurred exception to it. An appropriate handler means the type of exception object thrown matches the type of exception object it can handle.
+<br>
+If the run-time system searches all the methods on the call stack and couldn’t have found the appropriate handler, then the run-time system handover the Exception Object to the default exception handler, which is part of the run-time system. This handler prints the exception information in the following format and terminates the program abnormally.
+<br>
+
+# try , catch ,throw , throws ,finally
+
+**try :** try block is used to enclosed a piece of code which can throw exception.
+<br>
+**catch:** The catch block is used to handle the uncertain condition of a try block. A try block is always followed by a catch block, which handles the exception that occurs in the associated try block.
+<br>
+
+**throw :** The throw keyword is used to transfer control from the try block to the catch block. 
+<br>
+**throws :** The throws keyword is used for exception handling without try & catch block. It specifies the exceptions that a method can throw to the caller and does not handle itself. 
+<br>
+**Note :** throws keyword is required only for checked exceptions.
+<br>
+
+**finally :** Finally block is used to execute necessary part of our program. This block is always executed whether the exception occurred or not.
+
+
+# Chained Exception :
+Chained Exceptions allows to relate one exception with another exception, i.e one exception describes cause of another exception. For example, consider a situation in which a method throws an ArithmeticException because of an attempt to divide by zero but the actual cause of exception was an I/O error which caused the divisor to be zero. The method will throw only ArithmeticException to the caller. So the caller would not come to know about the actual cause of exception. Chained Exception is used in such type of situations.
+```bash
+// Java program to demonstrate working of chained exceptions 
+public class ExceptionHandling 
+{ 
+	public static void main(String[] args) 
+	{ 
+		try
+		{ 
+			// Creating an exception 
+			NumberFormatException ex = 
+					new NumberFormatException("Exception"); 
+
+			// Setting a cause of the exception 
+			ex.initCause(new NullPointerException( 
+					"This is actual cause of the exception")); 
+
+			// Throwing an exception with cause. 
+			throw ex; 
+		} 
+
+		catch(NumberFormatException ex) 
+		{ 
+			// displaying the exception 
+			System.out.println(ex); 
+
+			// Getting the actual cause of the exception 
+			System.out.println(ex.getCause()); 
+		} 
+	} 
+} 
+```
+
+
+# Important point from NullPointerExceptions :
+if(string/objects).equals(null){} // this is valid. 
+<br>
+if(null.equals(string/object){}    // this throws NullPointerExceptions
+<br>
+<br>
+**Note :** NullPointerException occurs when one tries to access or manipulate object reference that has a Null value stored in it.
+
+
+
+# How to avoid  NullPointerExceptions;
+There are certain methods to handle Null Pointer Exception in Java are mentioned below:
+<br>
+1.String comparison with literals
+<br>
+2.Keeping a Check on the arguments of a method
+<br>
+3.Use of Ternary Operator
+<br>
+
+
+
 # Virtual Memory Error:
 
 Virtual memory error refers to problems related to the management and allocation of virtual memory by the operating system (OS). Virtual memory is a memory management technique that allows an operating system to compensate for physical memory shortages, temporarily transferring data from random access memory (RAM) to disk storage.
