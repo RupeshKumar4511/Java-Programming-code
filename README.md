@@ -2917,7 +2917,7 @@ value.setToolTipText("Enter your password");
 
 # set image Icon to application
 ```bash
-image icon = ToolKit.getDefaultToolkit().getImage("Icon.png");
+Image icon = ToolKit.getDefaultToolkit().getImage("Icon.png");
 frame.setIconImage(icon);
 ```
 
@@ -3400,7 +3400,7 @@ public class JRootPaneExample {
             root.getContentPane().add(new JButton("Press Me"));  
   
             // Display the UI  
-            f.pack();  
+            f.pack();  // to make the window to be in preferred size.
             f.setVisible(true);  
           }  
 }  
