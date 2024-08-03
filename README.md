@@ -2285,6 +2285,197 @@ Character Stream
 Efficiency with Text Data: Character streams are optimized for handling text data. They read and write 16-bit Unicode characters, which makes them suitable for text files and ensures proper handling of different character encodings.
 Encoding/Decoding Overhead: Character streams involve encoding and decoding of characters to and from bytes, which can introduce some overhead. However, this overhead is necessary for correctly processing text data, especially when dealing with different character sets and encodings.
 
+# Java File class: 
+Java File class is Java’s representation of a file or directory pathname.
+<br>
+Because file and directory names have different formats on different platforms, a simple string is not adequate to name them.
+<br>
+Java File class contains several methods for working with the pathname, deleting and renaming files, creating new directories, listing the contents of a directory, and determining several common attributes of files and directories. 
+
+
+# FileReader :
+The FileReader class in Java is part of the java.io package and is used for reading character files. It is a convenience class for reading text files and is a subclass of InputStreamReader.
+It reads the characters as 16-bit char values, which represent the Unicode character set.
+
+# FileInputStream :
+FileInputStream class is useful to read data from a file in the form of sequence of bytes. FileInputStream is meant for reading streams of raw bytes such as image data.
+
+
+# Ways to Read File :
+```bash
+// 1. Using BufferedReader class
+BufferedReader br  = new BufferedReader(new FileReader("file1.txt"));
+
+// 2. Using FileReader class
+FileReader fr = new FileReader("test.txt");
+
+
+// 3. Using Scanner class
+File file = new File("first.txt");
+Scanner sc = new Scanner(file);
+
+```
+
+# FileOutputStream class
+The FileOutputStream class in Java is part of the java.io package and is used for writing binary data to a file.
+
+# FileWriter class
+The FileWriter class in Java is part of the java.io package and is used for writing character data to a file. It is a convenience class for writing text files and is a subclass of Writer.
+
+# BufferedWriter class
+The BufferedWriter class in Java is part of the java.io package and is used to write text to a character-output stream, buffering characters to provide efficient writing of single characters, arrays, and strings. It is a subclass of Writer and provides methods to write text efficiently by reducing the number of I/O operations.
+
+# Ways to Write File :
+```bash
+// 1.Using FileWriter class
+FileWriter filewriter = new FileWriter("file.txt");
+
+// 2.Using FileOutputStream class
+            // Step 1:  Create an object of FileOutputStream
+            outputStream = new FileOutputStream("file.txt");
+
+            String fileContent = "hello java world" ;
+
+            // Step 2: Store byte content from string
+            byte[] strToBytes = fileContent.getBytes();
+
+            // Step 3: Write into the file
+            outputStream.write(strToBytes);
+
+
+// 3. Using BufferedWriter class
+  BufferedWriter f_writer= new BufferedWriter(new FileWriter("demo.docx"));
+
+
+# RandomAccessFile class 
+Java.io.RandomAccessFile Class provides a way to random access files using reading and writing operations. It works like an array of byte stored in the File.
+
+<br>
+
+```bash
+// Java Program illustrating use of io.RandomAccessFile class methods 
+// read(), read(byte[] b), readBoolean(), readByte(), readInt() 
+// readFully(byte[] b, int off, int len), readFully(), readFloat() 
+// readChar(), readDouble(), 
+
+import java.io.*; 
+public class NewClass 
+{ 
+	public static void main(String[] args) 
+	{ 
+		try
+		{ 
+			double d = 1.5; 
+			float f = 14.56f; 
+
+			// Creating a new RandomAccessFile - "GEEK" 
+			RandomAccessFile geek = new RandomAccessFile("GEEK.txt", "rw"); 
+
+			// Writing to file 
+			geek.writeUTF("Hello Geeks For Geeks"); 
+
+			// File Pointer at index position - 0 
+			geek.seek(0); 
+
+			// read() method : 
+			System.out.println("Use of read() method : " + geek.read()); 
+
+			geek.seek(0); 
+
+			byte[] b = {1, 2, 3}; 
+			
+			// Use of .read(byte[] b) method : 
+			System.out.println("Use of .read(byte[] b) : " + geek.read(b)); 
+
+			// readBoolean() method : 
+			System.out.println("Use of readBoolean() : " + geek.readBoolean()); 
+
+			// readByte() method : 
+			System.out.println("Use of readByte() : " + geek.readByte()); 
+
+			geek.writeChar('c'); 
+			geek.seek(0); 
+
+			// readChar() : 
+			System.out.println("Use of readChar() : " + geek.readChar()); 
+
+			geek.seek(0); 
+			geek.writeDouble(d); 
+			geek.seek(0); 
+
+			// read double 
+			System.out.println("Use of readDouble() : " + geek.readDouble()); 
+
+			geek.seek(0); 
+			geek.writeFloat(f); 
+			geek.seek(0); 
+
+			// readFloat() : 
+			System.out.println("Use of readFloat() : " + geek.readFloat()); 
+
+			geek.seek(0); 
+			// Create array upto geek.length 
+			byte[] arr = new byte[(int) geek.length()]; 
+			// readFully() : 
+			geek.readFully(arr); 
+			
+			String str1 = new String(arr); 
+			System.out.println("Use of readFully() : " + str1); 
+
+			geek.seek(0); 
+			
+			// readFully(byte[] b, int off, int len) : 
+			geek.readFully(arr, 0, 8); 
+			
+			String str2 = new String(arr); 
+			System.out.println("Use of readFully(byte[] b, int off, int len) : " + str2); 
+		} 
+		catch (IOException ex) 
+		{ 
+			System.out.println("Something went Wrong"); 
+			ex.printStackTrace(); 
+		} 
+	} 
+} 
+```
+
+
+
+# JDBC (Java Database Connectivity) :
+JDBC stands for Java Database Connectivity. JDBC is a Java API to connect and execute the query with the database.
+
+
+# Purpose of JDBC :
+Enterprise applications created using the JAVA EE technology need to interact with databases to store application-specific information. So, interacting with a database requires efficient database connectivity, which can be achieved by using the ODBC(Open database connectivity) driver. This driver is used with JDBC to interact or communicate with various kinds of databases such as Oracle, MS Access, Mysql, and SQL server database.
+<br>
+
+# Steps to connect Database using JDBC
+
+``` bash
+// 1. Add Jar file of JDBC driver for a Specific database to referenced libraries in java project.
+
+// 2. Load driver class     (It is optional after Java 4.0)
+Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+
+
+// Note : We mostly use JDBC driver to connect application to database.
+
+// 3. Create a connection
+String url = "jdbc:mysql://localhost:3306/Database_Name";
+String user = "root";
+String password ="123";
+Connection con = DriverManager.getConnection(url,username,password);
+
+// 4. Create a statement
+Statement st = con.createStatement();
+
+// 5. execute query
+st.executeQuery("select * from Student_Table;");
+
+// 6. Close the statement and connection
+st.close();
+con.close();
+```
 
 # MVC
 **1. Model**
@@ -2294,6 +2485,8 @@ Retrieve data from the database.
 Handle data processing and business logic.
 Notify the view of any data changes, often through a notification mechanism like observers.
 Example: In an e-commerce application, the model would be responsible for handling data related to products, users, and orders.
+<br>
+<br>
 **2. View**
 Definition: The view is the user interface of the application. It displays data from the model to the user and sends user commands to the controller.
 Responsibilities:
@@ -2301,6 +2494,8 @@ Render data in a user-friendly format.
 Receive user input and display results.
 Refresh the display when data in the model changes.
 Example: In the same e-commerce application, the view would be the HTML pages or user interface elements that display product listings, user information, and shopping carts.
+<br>
+<br>
 **3. Controller**
 Definition: The controller acts as an intermediary between the model and the view. It processes user inputs and interacts with the model to update the view accordingly.
 Responsibilities:
@@ -2621,7 +2816,595 @@ Remember that in swing or awt gui, the origin start from top left .
 
 ![image](https://github.com/RupeshKumar4511/Java-Programming-code/assets/149661006/f4a9bffb-82d1-46c3-9184-9fdde918a525)
 
+# Event Dispatch Thread :
+Swing event handling code runs on a special thread known as the event dispatch thread. 
+<br>
+Most code that invokes Swing methods also runs on this thread. 
+<br>
+This is necessary because most Swing object methods are not "thread safe"
 
+
+# JMenuBar,JMenu,JMenuItem :
+The JMenuBar class is used to display menubar on the window or frame. It may have several menus.
+<br>
+The object of JMenu class is a pull down menu component which is displayed from the menu bar. It inherits the JMenuItem class.
+<br>
+The object of JMenuItem class adds a simple labeled menu item. The items used in a menu must belong to the JMenuItem or any of its subclass.
+
+```bash 
+
+          // Create a JMenubar
+          JMenuBar mb=new JMenuBar();
+
+		  //  create a JMenu
+          JMenu menu=new JMenu("Menu");  
+
+		  // create JMenuItem 
+		  JMenuItem i1,i2;
+
+          i1=new JMenuItem("Item 1");  
+          i2=new JMenuItem("Item 2");  
+
+		  // Adding menuitems to menu
+		  menu.add(i1);
+		  menu.add(i2);
+
+		// add menu to menubar
+		  mb.add(menu);
+		  frame.setJMenuBar(mb);
+
+		// Event Listener : ActionListener
+
+		// Registration method : 
+		i1.addActionListener(ActionListenr a);
+        i2.addActionListener(ActionListenr a);
+
+		// overidden method 
+		public void actionPerformed(ActionEvent e){
+			if(e.getSource()== i1){}
+		}
+
+```
+
+# JPopupMenu
+PopupMenu can be dynamically popped up at specific position within a component. It inherits the JComponent class.
+```bash 
+        // create a JPopupMenu 
+         final JPopupMenu popupmenu = new JPopupMenu("Edit");  
+
+		// create menuitems 
+         JMenuItem cut = new JMenuItem("Cut");  
+         JMenuItem copy = new JMenuItem("Copy");  
+         JMenuItem paste = new JMenuItem("Paste");  
+
+		// add menuitems to JPopupMenu
+         popupmenu.add(cut); popupmenu.add(copy); popupmenu.add(paste);  
+
+
+		//1. EventListener  :  ActionListener
+
+		// Registration method
+		cut.addActionListener(ActionListenr a);
+
+        // overidden method
+		public void actionPerformed(ActionEvent e){
+			if(e.getSource== cut){
+
+			}
+		}
+
+
+		// 2. EventListener   : MouseListener
+
+		// Registration method
+		frame.addMouseListener(MouseListener a);
+
+		// overidden method
+        public void mouseClicked(MouseEvent e){
+
+		}
+```
+
+
+# Use of Tooltip :
+It is used to provide the information about what to do in the particular components.
+<br>
+
+```bash
+JPasswordField value = new JPasswordField("password");
+value.setToolTipText("Enter your password");
+```
+
+# set image Icon to application
+```bash
+image icon = ToolKit.getDefaultToolkit().getImage("Icon.png");
+frame.setIconImage(icon);
+```
+
+
+# JSeparator :
+The object of JSeparator class is used to provide a general purpose component for implementing divider lines.
+It is used to draw a line to separate widgets in a Layout. 
+
+```bash
+JSeparator sep = new JSeparator();
+frame.add(sep);
+
+// we can also add separator using a method in menu
+menu.addSeparator();
+
+```
+
+# JProgressbar
+The JProgressBar class is used to display the progress of the task.
+<br>
+
+```bash
+JProgressBar progress = new JProgressBar();
+
+progress.setValue(0) // It indicates the task starts at 0%.
+
+progress.setStringPainted(true); // It indicates the the percentage of task is visible .
+
+
+// This mehod shows that the particular task is completing :
+
+public void iterate(){
+	int i =0;
+	while(i<1000){
+		progress.setValue(i);
+		i += 10;
+		try{
+			Thread.sleep(150);
+		}
+		catch(Exception e){
+			System.out.println(e)
+		}
+		
+	}
+}
+
+// After making object of class , call this iterate() method in main method;
+```
+
+
+# JTree :
+The JTree class is used to display the tree structured data or hierarchical data.
+JTree is a complex component. It has a 'root node' at the top most which is a parent for all nodes in the tree. 
+
+```bash
+DefaultMutableTreeNode style = new DefaultMutableTreeNode("File");
+DefaultMutableTreeNode color = new DefaultMutableTreeNode("color");
+style.add(color);
+
+
+DefaultMutableTreeNode red = new DefaultMutableTreeNode("red");
+color.add(red);
+```
+
+# JColorChooser :
+The JColorChooser class is used to create a color chooser dialog box so that user can select any color.
+
+Important Point : 
+<br>
+This component is used in overriden method. Ex => when user click on a button the a dialogbox of colorchooser are appears.
+
+```bash
+Container c = getContentPane();
+
+// overriden method
+public void actionPerformed(ActionEvent e){
+	Color intialcolor = Color.RED;
+	Color color = JColorChooser.showDialog(this,"select a color",intialcolor);
+	c.setBackground(color);	
+	// here this refers to current object.
+	}
+
+# JTabbedPane :
+The JTabbedPane class is used to switch between a group of components by clicking on a tab with a given title or icon. 
+
+```bash
+// create a textarea
+JTextArea ar = new JTextArea();
+
+// create a panel and add textarea to panel
+JPanel p1 = new JPanel();
+p1.add(ar);
+
+// create another panels
+JPanel p2 = new JPanel();
+
+
+JTabbedPane tp = new JTabbedPane();
+tp.add("main",p1);
+tp.add("visit",p2);
+
+```
+
+# JSlider :
+The Java JSlider class is used to create the slider. 
+By using JSlider, a user can select a value from a specific range.
+
+
+// create a JSlider
+JSlider sl = new JSlider(JSlider.HORIZONTAL,0,50,25);
+// Here min =0 , max =50, value =25;
+
+// some properties of JSlider
+sl.setMinorTickSpacing(2);
+sl.setMajorTickSpacing(10);
+sl.setPaintTicks(true);
+sl.setPaintLabels(true);
+```
+
+# JSpinner :
+The object of JSpinner class is a single line input field that allows the user 
+to select a number or an object value from an ordered sequence.
+
+```bash
+// create a default spinner model
+SpinnerModel model = SpinnerModel(5,0,10,1);
+// here : intialvalue = 5, min = 0, max = 10 , step or diff = 1
+
+
+// create a JSpinner using default spinner model
+JSpinner spinner = new JSpinner(value);
+
+// EventListener : ChangeListener
+
+// Registration method
+sl.addChangeListener(ChangeListener a);
+
+// overidden method 
+public void stateChanged(ChangeListener e){
+	label.setText((JSpinner)e.getSource.getValue());
+	// here label can be any JLabel.
+}
+
+```
+
+# JDialog :
+The JDialog control represents a top level window with a border and a title used to take some form of input from the user.
+<br>
+Unlike JFrame, it doesn't have maximize and minimize buttons.
+
+```bash
+JDialog d =  new JDialog(frame,"Dialog Example,true);
+// here true represents modal
+
+        d.setLayout( new FlowLayout() );  
+        JButton b = new JButton ("OK");  
+        b.addActionListener ( new ActionListener()  
+        {  
+            public void actionPerformed( ActionEvent e )  
+            {  
+                DialogExample.d.setVisible(false);  
+            }  
+        });  
+        d.add( new JLabel ("Click button to continue."));  
+        d.add(b);   
+        d.setSize(300,300);    
+        d.setVisible(true);  
+
+```
+
+# JFileChoser : 
+JFileChooser is a simple and successful method for inciting the client to pick a file or a directory.
+
+<br>
+<br>
+
+```bash
+import javax.swing.filechooser.*;
+
+// create a JFileChooser
+JFileChoser jf = new JFileChoser(FileSystemView.getFileSystemView);
+
+// At the place of "FileSystemView.getSystemView() , we can specify a paricular directory like : "C:"
+
+```
+
+
+Important method of this class :
+<br>
+<br>
+
+1. showOpenDialog(component owner ): This technique opens an exchange box that contains an
+endorsement button, as such, "Open", that opens a document from the discourse.
+<br>
+
+2. showSaveDialog( component owner ): This strategy is utilized when the client needs to save the particular document that he/she is utilizing.
+ This exchange box contains an endorsement button, as such, "Save", to save the document.
+<br>
+3. showDialog(component owner, string): This technique shows an exchange box with an endorsement button which is client characterized.
+<br>
+4. getSelectedFile(): This technique returns the document that is chosen by the client.
+<br>
+5 . setCurrentDirectory(File f): This technique sets the ongoing catalog as determined.
+<br>
+6. getCurrentDirectory(): This technique for JFileChooser returns the ongoing index as chosen by the client.
+<br>
+7. getName(File f) : This strategy returns the name of the document as given by the record contention.
+
+
+# JToggleButton :
+JToggleButton is used to create toggle button, it is two-states button to switch on or off.
+<br>
+<br>
+```bash
+// Event Listener : ItemListener
+
+public class JToggleButtonExample extends JFrame implements ItemListener{
+
+// JToggleButton reference
+
+ private JToggleButton button; 
+
+    // constructor 
+    JToggleButtonExample() {  
+        setTitle("JToggleButton with ItemListener Example");  
+        setLayout(new FlowLayout());  
+        setJToggleButton();  
+        setAction();  
+        setSize(200, 200);  
+        setVisible(true);  
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+    }  
+
+    private void setJToggleButton() {  
+        button = new JToggleButton("ON");  
+        add(button);  
+    }
+
+    private void setAction() { 
+
+	    // Registration method 
+        button.addItemListener(this);  
+    }
+
+	// overriden method  
+    public void itemStateChanged(ItemEvent eve) {  
+        if (button.isSelected())  
+            button.setText("OFF");  
+        else  
+            button.setText("ON");  
+    }  
+}
+```
+
+# JToolBar :
+JToolBar container allows us to group other components, usually buttons with icons in a row or column.
+<br>
+<br>
+
+```bash
+// create a JToolBar
+JToolBar tb = new JToolBar();
+
+// setRoolover() method indicates that When the rollover feature is enabled, 
+// the toolbar buttons will change appearance when the mouse cursor hovers over them
+tb.setRoolover(true);
+
+// add button to toolbar
+tb.add(new JButton("New"));
+
+// we can also add other buttons, scrollpane etc.
+```
+
+
+# JViewport 
+The JViewport class is used to implement scrolling. 
+<br>
+JViewport is designed to support both logical scrolling and pixel-based scrolling.
+<br>
+The viewport's child, called the view, is scrolled by calling the JViewport.setViewPosition() method.
+<br>
+
+```bash
+
+// create a panel
+JPanel panel = new JPanel();
+
+// create JViewport and set panel as its view
+JViewport viewport = new JViewport();
+viewport.setView(viewport);
+
+// create the scroll pane and set the viewport
+JScrollPane js = new JScrollPane();
+js.setViewport(viewport);
+
+// EventListener : ChangeListener
+
+// Registration method 
+public void addChangeListener{}
+
+// overriden method 
+public void stateChanged(ChangeEvent e ){}
+
+```
+
+# JComponent :
+The JComponent class is the base class of all Swing components except top-level containers.
+<br>
+Swing components whose names begin with "J" are descendants of the JComponent class.
+<br>
+For example, JButton, JScrollPane, JPanel, JTable etc. But, JFrame and JDialog don't inherit JComponent 
+<br>
+class because they are the child of top-level containers.
+
+```bash
+
+
+import java.awt.Color;  
+import java.awt.Graphics;  
+import javax.swing.JComponent;  
+import javax.swing.JFrame;  
+class MyJComponent extends JComponent {  
+      public void paint(Graphics g) {  
+        g.setColor(Color.green);  
+        g.fillRect(30, 30, 100, 100);  
+      }  
+}  
+public class JComponentExample {  
+      public static void main(String[] arguments) {  
+        MyJComponent com = new MyJComponent();  
+        // create a basic JFrame  
+        JFrame.setDefaultLookAndFeelDecorated(true);  
+        JFrame frame = new JFrame("JComponent Example");  
+        frame.setSize(300,200);  
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+        // add the JComponent to main frame  
+        frame.add(com);  
+        frame.setVisible(true);  
+      }  
+}  
+
+```
+
+# JLayeredPane 
+The JLayeredPane class is used to add depth to swing container.
+<br>
+It is used to provide a third dimension for positioning component and divide the depth-range into several different layers.
+
+```bash
+
+// create a JLayeredPane 
+JLayeredPane pane = getLayeredPane();
+
+// create other components like buttons 
+JButton first = new JButton();
+first.setBounds(30,40,40,40);
+first.setBackground(Color.blue);
+
+
+JButton second = new JButton();
+second.setBounds(30,40,40,40);
+second.setBackground(Color.blue);
+
+
+// add components to LayeredPane
+pane.add(first, 1);
+pane.add(second, 2);
+
+
+// here 1 and 2 are indexes.
+
+
+
+// set the visibility of JLayeredPane
+pane.setVisible(true);
+
+```
+
+# JEditorPane 
+JEditorPane class is used to create a simple text editor window. This class has setContentType() and setText() methods.
+<br>
+setContentType("text/plain"): This method is used to set the content type to be plain text.
+<br>
+setText(text): This method is used to set the initial text content.
+<br>
+```bsah
+
+    // create a JEditorPane
+    JEditorPane pane = new JEditorPane();
+
+	// set the contet type of JEditorPane
+    pane.setContentType("text/plain");
+
+	// set the JEditorPane to content pane
+    setContentPane(pane);
+
+```
+
+# JSplitPane :
+JSplitPane is used to divide two components. 
+<br>
+The two components are divided based on the look and feel implementation, and they can be resized by the user.
+<br>
+If the minimum size of the two components is greater than the size of the split pane, the divider will not allow you to resize it.
+
+```bash
+import java.awt.FlowLayout;  
+import java.awt.Panel;  
+import javax.swing.JComboBox;  
+import javax.swing.JFrame;  
+import javax.swing.JSplitPane;  
+public class JSplitPaneExample {  
+    private static void createAndShow() {  
+        // Create and set up the window.  
+
+        final JFrame frame = new JFrame("JSplitPane Example"); 
+
+        // Display the window.  
+        frame.setSize(300, 300);  
+        frame.setVisible(true);  
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+
+        // set flow layout for the frame  
+        frame.getContentPane().setLayout(new FlowLayout());  
+        String[] option1 = { "A","B","C","D","E" };  
+        JComboBox <String> box1 = new JComboBox<String>(option1);  
+        String[] option2 = {"1","2","3","4","5"};  
+        JComboBox <String> box2 = new JComboBox<String>(option2);    
+        Panel panel1 = new Panel();  
+        panel1.add(box1);  
+        Panel panel2 = new Panel();  
+        panel2.add(box2);  
+
+		// create JSplitPane and set its properties and add panel to it
+        // JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, panel1, panel2);  
+        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT,  
+        panel1, panel2);  
+        frame.getContentPane().add(splitPane);  
+    }  
+    public static void main(String[] args) {  
+        // Schedule a job for the event-dispatching thread:  
+        // creating and showing this application's GUI.  
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {  
+            public void run() {  
+                createAndShow();  
+            }  
+        });  
+    }  
+}  
+```
+
+
+# JRootPane 
+JRootPane is a lightweight container used behind the scenes by JFrame, JDialog, JWindow, JApplet, and JInternalFrame.
+
+```bsah
+import javax.swing.JButton;  
+import javax.swing.JFrame;  
+import javax.swing.JMenu;  
+import javax.swing.JMenuBar;  
+import javax.swing.JRootPane;  
+  
+public class JRootPaneExample {  
+     public static void main(String[] args) {  
+            JFrame f = new JFrame();  
+            f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
+
+			// create a JRootPane
+            JRootPane root = f.getRootPane();  
+  
+            // Create a menu bar  
+            JMenuBar bar = new JMenuBar();  
+            JMenu menu = new JMenu("File");  
+            bar.add(menu);  
+            menu.add("Open");  
+            menu.add("Close");  
+            root.setJMenuBar(bar);  
+  
+            // Add a button to the content pane  
+            root.getContentPane().add(new JButton("Press Me"));  
+  
+            // Display the UI  
+            f.pack();  
+            f.setVisible(true);  
+          }  
+}  
+```
 
  
 
