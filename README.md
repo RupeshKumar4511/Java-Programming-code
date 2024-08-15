@@ -325,6 +325,17 @@ class Test
 Note : For a variable to be read after the termination of a loop, It must be declared before the body of the loop.
 
 
+# Important Point from Varibles and method Scopring:
+For primitive,only value is  passed to a method.
+<br>
+For non primitive,value of reference variable is passed.
+<br>
+In java there is pass by value .
+<br>
+In java scoping,the high level scope is overrided with lower level scope .
+<br>
+Scope of local will start when it is initialised.
+
 
 # Methods to Take Input in Java
 There are two ways by which we can take Java input from the user or from a file
@@ -672,6 +683,7 @@ Since J2SE 5.0, autoboxing and unboxing feature convert primitives into objects 
 <br>
 AutoBoxing =>
 <br>
+
 ```bash
 int a =12;
 
@@ -682,6 +694,7 @@ Integer j = Integer.valueOf(a); // we can convert explicitly
 <br>
 
 Unboxing => 
+
 ```bash
 Integer a = new Integer(3);
 
@@ -1454,9 +1467,11 @@ class UseDemo {
 }
 ```
 <br>
-<br>
+
+
 
 **Example of overloading using overriding :**
+
 ```bash
 class App {
 
@@ -1478,6 +1493,7 @@ public class Test extends App {
 	}
 }
 ```
+
 # Method Overriding :
 when subclass defines methods that are already defined in super class then this process is called  method overriding.
 
