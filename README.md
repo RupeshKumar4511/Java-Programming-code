@@ -100,7 +100,7 @@ public static void main (String [] args){
 Next, theJVM runs everything between the curly braces { }of your main
 method.
 <br>
-**EveryJava application has to have at least one class. and at least
+**Every Java application has to have at least one class. and at least
 one main method (not one main per class;just one main per application**).
 
 
@@ -212,7 +212,44 @@ Literals: true ,false ,null
 <br>
 Note: The keywords const and goto are reserved, even though they are not currently used. In place of const, the final keyword is used. Some keywords like strictfp are included in later versions of Java.
 
+
+# var keywords :
+The var keyword in Java was introduced in Java 10 to support local variable type inference, and it helps make code more concise without sacrificing type safety.
 <br>
+```bash 
+var x; //  Error: cannot infer type without initializer
+
+
+// Even though you use var, Java is statically typed. 
+// The type is determined at compile time and cannot change.
+
+var x = "hello";
+x = 5; //  Compile-time error: incompatible types
+
+
+// Example : 
+public class Test {
+
+    public static void main(String[] args) {
+        var a = 23;
+        System.out.println(a);
+    }
+}
+
+
+// Only for local variables, including for loops and in main method.
+
+// Cannot be used for:
+
+// Fields (class-level variables)
+ 
+// Method parameters or return types
+ 
+// Variables without an initializer
+
+
+```
+
 
 # Operators:
 Operators are special symbol that are used for performing certain function.
@@ -250,6 +287,8 @@ Variable is name given to memory given to memory location.
 
 # Important point about instance variable:
 Instance variables are stored in the heap memory as part of the objects they belong to.
+<br>
+Value of instance variable can be changed inside another static or non static method in a class 
 
 # Instance method :
 Instance methods are methods that require an object of its class to be created before it can be called.
@@ -262,8 +301,9 @@ Static methods are the methods in Java that can be called without creating an ob
 <br>
 <br>
 Static methods are stored in Metaspace .
+
 # Important point about abstract variable:
- The following are various illegal combinations of other modifiers for methods with respect to abstract modifiers:
+The following are various illegal combinations of other modifiers for methods with respect to abstract modifiers:
  <br>
 final abstract
 <br>
@@ -325,20 +365,92 @@ class Test
 Note : For a variable to be read after the termination of a loop, It must be declared before the body of the loop.
 
 
-# Important Point from Varibles and method Scopring:
-For primitive,only value is  passed to a method.
+# Important Point from Varibles and method Scoping:
+
+Java passes primitive values (like int, char, float, etc.) by value — that is, a copy of the value is passed to the method.
 <br>
-For non primitive,value of reference variable is passed.
+```bash 
+
+void change(int x) {
+    x = 10;
+}
+
+int a = 5;
+change(a);
+// a is still 5
+
+```
 <br>
-In java there is pass by value .
 <br>
-In java scoping,the high level scope is overrided with lower level scope .
+```bash 
+// For non-primitives (objects), a copy of the reference is passed by value.
+
+// we can change the contents of the object (e.g., modify an array),
+
+// But we cannot change the reference itself in the caller. 
+
+void changeName(StringBuilder name) {
+     name.append(" Smith");
+}
+
+StringBuilder sb = new StringBuilder("John");
+changeName(sb);
+// sb now contains "John Smith"
+
+
+
+
+
+// Exception
+void reassign(StringBuilder name) {
+    
+	name = new StringBuilder("Jane"); // only changes local copy
+}
+
+StringBuilder sb = new StringBuilder("John");
+reassign(sb);
+// sb still contains "John"
+
+
+```
+
+
 <br>
-Scope of local will start when it is initialised.
+In java there is only pass by value.
+<br>
+```bash 
+
+Java allows variable shadowing, where a local variable can 
+hide a variable from an outer scope (like a field).
+
+
+
+class Test {
+    int x = 10;
+
+    void method() {
+        int x = 20; // shadows the field 'x'
+        System.out.println(x); // prints 20
+    }
+}
+
+
+```
+<br>
+<br>
+```bash 
+Scope of local variable will start when it is declaration but its usage starts with intialization. 
+void test() {
+    int x;
+    // System.out.println(x); // Compile error: variable might not be initialized
+    x = 5;
+}
+```
+
 
 
 # Methods to Take Input in Java
-There are two ways by which we can take Java input from the user or from a file
+There are mainly two ways by which we can take Java input from the user or from a file
 <br>
 1.BufferedReader Class
 <br>
@@ -349,14 +461,17 @@ There are two ways by which we can take Java input from the user or from a file
 // Using Console to input data from user
 <br>
 String name = System.console().readLine();
+<br>
 
-# important point from Scanner class and BufferReader class:
+# important point from Scanner class and BufferedReader class:
+
 The Scanner class reads an entire line and divides the line into tokens. Tokens are small elements that have some meaning to the Java compiler. For example, Suppose there is an input string: How are you
 In this case, the scanner object will read the entire line and divides the string into tokens: “How”, “are” and “you”. The object then iterates over each token and reads each token using its different methods.
 <br>
-But BufferReader Reads text from a character-input stream (simply reads sequence of character ). That's why it is faster than Scanner class.
+But BufferedReader Reads text from a character-input stream (simply reads sequence of character ). That's why it is faster than Scanner class.
 <br>
-BufferReader class always wraps around FileReader class(in case of Text file) or InputStreamReader (in case of taking input from keyboad).
+BufferedReader class always wraps around FileReader class(in case of Text file) or InputStreamReader (in case of taking input from keyboard). And It must be in try-catch block.
+<br>
 ``` bash
 
 public class Test
@@ -904,7 +1019,7 @@ public class Main {
 The Arrays class in java.util package is a part of the Java Collection Framework. This class provides static methods to dynamically create and access Java arrays. It consists of only static methods and the methods of Object class. The methods of this class can be used by the class name itself.
 
 
-<br>
+
 # Important point from Arrays method:
 Difference between sort() an parallelSort() method:
 sort() method is single thread method that uses Dual Pivot Quicksort algorithm to sort the data.
@@ -1053,8 +1168,7 @@ Finds the maximum value in the stream. It returns an OptionalInt because the str
 
 Retrieves the value from the OptionalInt. Since we're assuming the array is not empty, this operation is safe. However, if there's a possibility that the array could be empty, it's better to handle the empty case explicitly to avoid NoSuchElementException.
 
-# Throwable class :
-The Throwable class is the superclass of every error and exception in the Java language. Only objects that are one of the subclasses this class are thrown by any “Java Virtual Machine” or may be thrown by the Java throw statement.
+
 
 # OOPS
 **When to use Abstract class ?**
@@ -1062,12 +1176,12 @@ The Throwable class is the superclass of every error and exception in the Java l
 Sometimes we want to create a superclass that only defines a generalization form that will be shared by all of its subclasses, leaving it to each subclass to fill in the details.
 
 <br>
-# Why abstract class is faster than interface?
+Why abstract class is faster than interface?
 <br>
 An abstract class is faster than an interface because the interface involves a search before calling any overridden method in Java whereas abstract class can be directly used. 
 
 <br>
-# How to use Inner Abstract class :
+How to use Inner Abstract class :
 <br>
 We can use the abstract keyword for declaring top-level classes (Outer class) as well as inner classes as abstract.
 <br>
@@ -1112,7 +1226,7 @@ public class Main {
 
 Encapsulation can be achieved by declaring all the variables in a class as private and writing public methods in the class to set and get the values of the variables.
 
-# Important Points about method overriding and static methods:
+# Important Points about instance method and static method's call:
 
 For class (or static) methods, the method according to the type of reference is called, not according to the object being referred, which means method call is decided at compile time.
 <br>
@@ -1407,12 +1521,13 @@ public class Test
 }
 ```
 
-
+<br>
 **Note :** method arguments Integer and String both are not primitive data types in Java. That means they accept null values. When we pass a null value to the method1 the compiler gets confused which method it has to select, as both are accepting the null. 
 
 <br>
 
 **Another Point from method overloading :**
+<br>
 <img width="393" alt="image" src="https://github.com/user-attachments/assets/0f441667-317b-489a-aa64-4dea9711fc6d">
 
 <br>
@@ -1471,7 +1586,7 @@ class UseDemo {
 
 
 **Example of overloading using overriding :**
-
+<br>
 ```bash
 class App {
 
@@ -1562,7 +1677,7 @@ class Main {
 	}
 }
 ```
-
+<br>
 3.The overriding method must have the same return type (or subtype) :
 <br>
 From Java 5.0 onwards it is possible to have different return types for an overriding method in the child class, but the child’s return type should be a sub-type of the parent’s return type. This phenomenon is known as the covariant return type.
@@ -1589,6 +1704,7 @@ class Base {
 
 <br>
 4.If the super-class overridden method does not throw an exception, the subclass overriding method can only throw the unchecked exception, throwing a checked exception will lead to a compile-time error.
+<br>
 ```bash
 // Java program to demonstrate overriding when
 // superclass method does not declare an exception
@@ -1666,7 +1782,7 @@ class Child4 extends Parent {
 }
 ```
 
-# When to use Method Oveerriding :
+# When to use Method Overriding :
 Example:
 <br>
 ```bash
@@ -1717,7 +1833,7 @@ class Main {
 ```
 # concepts of stack memory and heap memory
 In Java, memory management is a critical aspect of the language's runtime environment.
- Both stack and heap are areas of memory where data can be stored during program execution, but they serve different purposes and have different characteristics.
+Both stack and heap are areas of memory where data can be stored during program execution, but they serve different purposes and have different characteristics.
 <br>
 
 **1. Stack Memory:**
@@ -1949,26 +2065,32 @@ This package provides the API for date and time operations.
 **Purpose :**  Offers a comprehensive set of classes for date and time manipulation, introduced in Java 8 to replace the older java.util.Date and java.util.Calendar.
 
 
-# Thread : 
-
+# Multithreading : 
+Multithreading in Java allows for the concurrent execution of multiple threads within a single program. 
+<br>
+Thread : Java threads are lightweight subprocesses, representing the smallest unit of execution with separate paths.
+<br>
 **There are two ways to create thread :**
+<br>
 1. Extending the Thread class
 <br>
 ```bash
 class MultithreadingDemo extends Thread {
 	public void run() {
+		@Override
 		try {
 			// Displaying the thread that is running
 			for (int i = 0; i < 100; i++) {
 				System.out.println("hi");
 			}
 		} catch (Exception e) {
-
+			System.out.println(e.getMessage());
 		}
 	}
 }
 
 class ThreadTest2 extends Thread {
+	@Override
 	public void run() {
 		try {
 			for (int i = 0; i < 100; i++) {
@@ -1991,92 +2113,140 @@ public class Test {
 
 }
 
+
+// a.start() and b.start() start new threads and call the run() method in parallel.
+
+// If you called a.run() directly, it would execute in the main thread, not concurrently.
+
 ```
 <br>
 
 2. Implementing the Runnable Interface
+<br>
 ```bash
 class ThreadTest3 implements Runnable {
-
-	@Override
-	public void run() {
-		for (int i = 0; i < 100; i++) {
-			System.out.println("hello java World");
-			try {
-				Thread.sleep(10);
-			} catch (InterruptedException e) {
-
-				e.printStackTrace();
-			}
-		}
-	}
-
+    @Override
+    public void run() {
+        for (int i = 0; i < 100; i++) {
+            System.out.println("hello java World");
+            try {
+                Thread.sleep(10); // makes output more interleaved
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
 
 class ThreadTest4 implements Runnable {
-
-	@Override
-	public void run() {
-		for (int i = 0; i < 100; i++) {
-			System.out.println("java World");
-		}
-	}
-
+    @Override
+    public void run() {
+        for (int i = 0; i < 100; i++) {
+            System.out.println("java World");
+        }
+    }
 }
 
 public class Test {
+    public static void main(String[] args) {
+        ThreadTest3 a = new ThreadTest3();
+        ThreadTest4 b = new ThreadTest4();
 
-	public static void main(String[] args) {
-		ThreadTest3 a = new ThreadTest3();
-		ThreadTest4 b = new ThreadTest4();
+        Thread c = new Thread(a); 
+        Thread d = new Thread(b);
 
-		Runnable c = new Thread(a);
-        Thread.currentThread().getPriority();
-		Runnable d = new Thread(b);
-		c.run();
-
-		d.run();
-	}
+        c.start(); //  Start new threads
+        d.start();
+    }
 }
 ```
 
 
 # Exception Handling 
 It is the mechanism to handle the run time exception so that normal flow of program can be maintained.
+<br>
+Exception : Exceptions are unexpected events that disrupts the normal flow of program.
 
 <br>
 <br>
-# Exception : Exceptions are unexpected events that disrupts the normal flow of program.
+Errors : Errors are serious problem that can not be handled by using try-catch statement.
 
-<br>
-<br>
-
-# Errors : Errors are serious problem that can not be handled by using try-catch statement.
-<br>
-<br>
 
 # Types of Built-in Exception In Java:
 <br>
 
 **1.Checked Exception :** These are the exception that which are checked at compile time.
+Example: IOException, SQLException etc.
 <br>
+```bash 
+import java.io.*;
 
+public class CheckedExample {
+    public static void main(String[] args) {
+        try {
+            FileReader reader = new FileReader("file.txt"); // might not exist
+        } catch (IOException e) {
+            System.out.println("File not found or couldn't be read.");
+        }
+    }
+}
+
+
+```
+<br>
 **2.Unchecked Exception :** These are the exception that which are checked at run time.
- 
+Example : NullPointerException, ArithmeticException, ArrayIndexOutOfBoundsException etc. 
 <br>
+```bash
+public class UncheckedExample {
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 0;
+        int c = a / b; // causes ArithmeticException: / by zero
+        System.out.println(c);
+    }
+}
 
+
+```
+<br>
 **# User Defined Exception :**
 Sometimes, the built-in exceptions in Java are not able to describe a certain situation. In such cases, the user can also create exceptions which are called ‘user-defined Exceptions’. 
 
+# Throwable class :
+The Throwable class is the superclass of every error and exception in the Java language. Only objects that are one of the subclasses this class are thrown by any “Java Virtual Machine” or may be thrown by the Java throw statement.
+
 # How does JVM handle Exception :
 
-There might be a list of the methods that had been called to get to the method where an exception occurred. This ordered list of methods is called Call Stack.
+The call stack is a runtime data structure that keeps track of method calls in the order they're made.
 <br>
-The run-time system starts searching from the method in which the exception occurred and proceeds through the call stack in the reverse order in which methods were called.
+When an exception occurs:
 <br>
-If it finds an appropriate handler, then it passes the occurred exception to it. An appropriate handler means the type of exception object thrown matches the type of exception object it can handle.
+The JVM looks at the method where the exception happened.
 <br>
-If the run-time system searches all the methods on the call stack and couldn’t have found the appropriate handler, then the run-time system handover the Exception Object to the default exception handler, which is part of the run-time system. This handler prints the exception information in the following format and terminates the program abnormally.
+It searches up the call stack (i.e., from the current method to its caller, then that caller's caller, etc.).
+<br>
+It looks for a matching catch block — a handler for that specific type of exception or appropriate handler.
+<br>
+```bash 
+public class Example {
+    public static void main(String[] args) {
+        a(); // Call Stack: main → a → b
+    }
+
+    static void a() {
+        b();
+    }
+
+    static void b() {
+        int x = 5 / 0; // Exception occurs here
+    }
+}
+
+
+```
+<br>
+If the JVM searches all the methods on the call stack and couldn't have found the appropriate handler, then the run-time system handover the Exception Object to the default exception handler, which is part of the run-time system. This handler prints the exception information in the following format and terminates the program abnormally.
 <br>
 
 # try , catch ,throw , throws ,finally
@@ -2097,49 +2267,63 @@ If the run-time system searches all the methods on the call stack and couldn’t
 
 
 # Chained Exception :
-Chained Exceptions allows to relate one exception with another exception, i.e one exception describes cause of another exception. For example, consider a situation in which a method throws an ArithmeticException because of an attempt to divide by zero but the actual cause of exception was an I/O error which caused the divisor to be zero. The method will throw only ArithmeticException to the caller. So the caller would not come to know about the actual cause of exception. Chained Exception is used in such type of situations.
+Chained Exceptions allow one exception (cause) to be wrapped inside another exception (current), so the original problem is not lost when rethrowing a different exception.
+<br>
+This is especially useful when:
+<br>
+You catch a low-level exception (like IOException)
+<br>
+But you want to throw a higher-level exception (like ArithmeticException)
+<br>
+And still preserve the original cause for debugging
+<br>
 ```bash
 // Java program to demonstrate working of chained exceptions 
-public class ExceptionHandling 
-{ 
-	public static void main(String[] args) 
-	{ 
-		try
-		{ 
-			// Creating an exception 
-			NumberFormatException ex = 
-					new NumberFormatException("Exception"); 
+import java.io.*;
 
-			// Setting a cause of the exception 
-			ex.initCause(new NullPointerException( 
-					"This is actual cause of the exception")); 
+public class ChainedExample {
 
-			// Throwing an exception with cause. 
-			throw ex; 
-		} 
+    public static void main(String[] args) {
+        try {
+            calculate();
+        } catch (ArithmeticException e) {
+            System.out.println("Caught Exception: " + e);
+            System.out.println("Original Cause: " + e.getCause());
+        }
+    }
 
-		catch(NumberFormatException ex) 
-		{ 
-			// displaying the exception 
-			System.out.println(ex); 
+    static void calculate() {
+        try {
+           readFile();
+        } catch (IOException e) {
+            // Wrap IOException inside ArithmeticException
+            ArithmeticException ae = new ArithmeticException("Division failed due to IO issue");
+            ae.initCause(e); // chaining the cause
+            throw ae;
+        }
+    }
 
-			// Getting the actual cause of the exception 
-			System.out.println(ex.getCause()); 
-		} 
-	} 
-} 
+    static void readFile() throws IOException {
+        throw new IOException("Failed to read file, divisor couldn't be loaded");
+    }
+}
+
+
+// initCause()	Sets the original cause after object is created
+// getCause()	Retrieves the root cause
+
 ```
 
 
 # Important point from NullPointerExceptions :
+```bash 
 if(string/objects).equals(null){} // this is valid. 
-<br>
-if(null.equals(string/object){}    // this throws NullPointerExceptions
-<br>
-<br>
+
+if(null.equals(string/object)){}    // this throws NullPointerExceptions
+
 **Note :** NullPointerException occurs when one tries to access or manipulate object reference that has a Null value stored in it.
 
-
+```
 
 # How to avoid  NullPointerExceptions;
 There are certain methods to handle Null Pointer Exception in Java are mentioned below:
@@ -2187,7 +2371,7 @@ Error: OutOfMemoryError, StackOverflowError, VirtualMachineError.
 
 
 # Use of finalize() method;
-The primary purpose of the finalize method is to perform cleanup operations on resources that are not managed by the Java garbage collector. This includes resources like file handles, network connections, or database connections.
+The primary purpose of the finalize method is to allow an object to clean up resources before it is reclaimed by the garbage collector. This includes resources like file handles, network connections, or database connections.
 
 example =>
 ``` bash
@@ -2361,6 +2545,9 @@ FileWriter filewriter = new FileWriter("file.txt");
 
 // 3. Using BufferedWriter class
   BufferedWriter f_writer= new BufferedWriter(new FileWriter("demo.docx"));
+  f_writer.write("Hello java world");
+
+```
 
 
 # RandomAccessFile class 
@@ -2963,9 +3150,9 @@ progress.setValue(0) // It indicates the task starts at 0%.
 progress.setStringPainted(true); // It indicates the the percentage of task is visible .
 
 
-// This mehod shows that the particular task is completing :
+// This method shows that the particular task is completing :
 
-public void iterate(){
+<!-- public void iterate(){
 	int i =0;
 	while(i<1000){
 		progress.setValue(i);
@@ -2978,7 +3165,7 @@ public void iterate(){
 		}
 		
 	}
-}
+} -->
 
 // After making object of class , call this iterate() method in main method;
 ```
